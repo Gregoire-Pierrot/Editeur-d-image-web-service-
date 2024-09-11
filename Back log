@@ -1,0 +1,27 @@
+- Faire un répertoire git / 0
+
+Client (Python) :
+  - se connecter au serveur / 2
+  - prendre l'instruction de modification d'image / 1
+  - prendre l'image à modifier (image local) + verifier le format du fichier / 12
+  - faire une requette au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+  - faire une interface utilisateur / 12
+    - afficher l'image retourner du serveur / 4
+  - pourvoir l'enregistrer / 2
+
+Serveur (Java) :
+  - creer un serveur / 1
+  - accepter les nouvelles connexions et générer un token par client / 3
+  - Recevoir une requette de la forme : [token] [image] [instruction] / 1
+    - vérififier la validité du token / 1
+  - différencier l'instrcution / 1
+  - modifier l'image / 12
+    - rotation à gauche / 3
+    - rotation à droite / 3
+    - inversion horizontal / 3
+    - inversion vertical / 3
+    - noire & blanc / 3
+    - ...
+  - renvoyer au client l'image modifié / 12
+
+- cryptage des requettes / 12
