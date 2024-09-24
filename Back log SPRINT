@@ -1,3 +1,203 @@
-*******************************SPRINT 1************************************************
-Ibrahim : 
-Pierrot :
+# Planification des Sprints
+
+## Sprint 1 (déjà réalisé)
+
+**Objectif principal :**  
+Mettre en place les fondations du projet (création du serveur, gestion des tokens, démarrage côté client).
+
+- **Ibrahim :**  
+  - Commencer la création du serveur avec Pierrot (**1 point**).  
+  **Total : 1 points**
+
+- **Pierrot :**  
+  - Commencer la création du serveur avec Ibrahim (**1 point**).  
+  **Total : 1 point**
+
+- **Ahibu :**  
+  - Commencer la gestion des tokens côté serveur (**3 points**).  
+  **Total : 3 points**
+
+- **User 5 :**  
+  - Démarrer la partie client : implémenter la connexion au serveur (**2 points**).  
+  **Total : 2 points**
+
+- **Thyago et User 6 :**  
+  - **Absents**
+
+---
+
+## Sprint 2
+
+**Objectif principal :**  
+Finaliser la création du serveur, la gestion des tokens, et avancer sur la gestion des images côté client.
+
+- **Ibrahim :**  
+  - Finaliser la création du serveur avec Pierrot (**2 points**).  
+  - Recevoir une requête de la forme [token] [image] [instruction] (**1 point**).  
+  - Implémenter la modification d'image : rotation à gauche (**3 points**).  
+  **Total : 6 points**
+
+- **Pierrot :**  
+  - Finaliser la création du serveur avec Ibrahim (**2 points**).  
+  - Vérifier la validité du token sur le serveur (**1 point**).  
+  - Implémenter la modification d'image : rotation à droite (**3 points**).  
+  **Total : 6 points**
+
+- **Ahibu :**  
+  - Finaliser la gestion des tokens côté serveur (**2 points**).  
+  - Différencier les instructions envoyées par le client au serveur (**1 point**).  
+  - Implémenter la modification d'image : inversion horizontale (**3 points**).  
+  **Total : 6 points**
+
+- **Thyago :**  
+  - Implémenter la gestion des instructions sur le serveur (**2 points**).  
+  - Implémenter la modification d'image : inversion verticale (**3 points**).  
+  **Total : 5 points**
+
+- **User 5 :**  
+  - Implémenter la prise d'instruction de modification d'image côté client (**1 point**).  
+  - Prendre l'image à modifier depuis un fichier local et vérifier le format du fichier (**6 points**).  
+  - Faire une requête au serveur avec l'image, l'instruction, et le token (**2 points**).  
+  **Total : 9 points**
+
+- **User 6 :**  
+  - Effectuer des tests unitaires sur la gestion des tokens et la réception des requêtes côté serveur (**2 points**).  
+  - Effectuer des tests sur la modification d'image : rotation à gauche et droite (**3 points**).  
+  **Total : 5 points**
+
+---
+
+## Sprint 3
+
+**Objectif principal :**  
+Finaliser les modifications d'image et avancer sur l'interface utilisateur.
+
+- **Ibrahim :**  
+  - Implémenter la modification d'image : noir et blanc (**3 points**).  
+  - Optimisation des performances du serveur pour le traitement d'image (**3 points**).  
+  **Total : 6 points**
+
+- **Pierrot :**  
+  - Finaliser les modifications d'image côté serveur (**3 points**).  
+  - Assurer la gestion des erreurs lors de la réception des requêtes (**3 points**).  
+  **Total : 6 points**
+
+- **Ahibu :**  
+  - Implémenter de nouveaux filtres d'image si nécessaire (**3 points**).  
+  - Optimiser la gestion des tokens (**3 points**).  
+  **Total : 6 points**
+
+- **Thyago :**  
+  - Test et validation des opérations de modification d'image (**3 points**).  
+  - Implémenter les logs sur le serveur pour suivre les requêtes des clients (**3 points**).  
+  **Total : 6 points**
+
+- **User 5 :**  
+  - Implémenter l'interface utilisateur (UI) pour interagir avec le serveur (**12 points**).  
+  - Afficher l'image modifiée retournée par le serveur (**4 points**).  
+  **Total : 16 points**
+
+- **User 6 :**  
+  - Effectuer des tests de bout en bout pour vérifier la cohérence du système client-serveur (**6 points**).  
+  - Test sur l'UI et l'affichage de l'image modifiée (**4 points**).  
+  **Total : 10 points**
+
+---
+
+## Sprint 4
+
+**Objectif principal :**  
+Optimisation et ajout de nouvelles fonctionnalités.
+
+- **Ibrahim :**  
+  - Implémenter de nouveaux filtres d'image si besoin (**3 points**).  
+  - Optimiser les performances serveur lors de l'envoi des images au client (**3 points**).  
+  **Total : 6 points**
+
+- **Pierrot :**  
+  - Optimiser le système d'envoi et de réception d'images (**4 points**).  
+  - Ajouter des tests automatiques pour les filtres d'image (**4 points**).  
+  **Total : 8 points**
+
+- **Ahibu :**  
+  - Cryptage des requêtes entre le client et le serveur (**12 points**).  
+  **Total : 12 points**
+
+- **Thyago :**  
+  - Aider Ahibu sur le cryptage des communications (**6 points**).  
+  - Optimiser le traitement des requêtes côté serveur (**3 points**).  
+  **Total : 9 points**
+
+- **User 5 :**  
+  - Ajouter la fonctionnalité d'enregistrement de l'image modifiée (**2 points**).  
+  - Optimiser l'UI et la gestion des fichiers locaux (**4 points**).  
+  **Total : 6 points**
+
+- **User 6 :**  
+  - Tests de performance et sécurité après l'ajout du cryptage (**6 points**).  
+  - Effectuer des tests de charge sur le serveur pour voir comment il gère plusieurs connexions en simultané (**4 points**).  
+  **Total : 10 points**
+
+---
+
+## Sprint 5
+
+**Objectif principal :**  
+Finalisation et intégration complète.
+
+- **Ibrahim :**  
+  - Revue finale du serveur, vérification de la gestion des connexions et des filtres d'image (**6 points**).  
+  **Total : 6 points**
+
+- **Pierrot :**  
+  - Finalisation de la gestion des erreurs serveur (**6 points**).  
+  **Total : 6 points**
+
+- **Ahibu :**  
+  - Finalisation et optimisation du cryptage (**6 points**).  
+  **Total : 6 points**
+
+- **Thyago :**  
+  - Finaliser la gestion des requêtes et des logs serveur (**6 points**).  
+  **Total : 6 points**
+
+- **User 5 :**  
+  - Finaliser l'interface utilisateur avec toutes les fonctionnalités complètes (**6 points**).  
+  **Total : 6 points**
+
+- **User 6 :**  
+  - Tests finaux sur l'intégration complète du système (**6 points**).  
+  **Total : 6 points**
+
+---
+
+## Sprint 6
+
+**Objectif principal :**  
+Test, validation finale et documentation.
+
+- **Ibrahim :**  
+  - Documenter le serveur et le processus de gestion des images (**6 points**).  
+  **Total : 6 points**
+
+- **Pierrot :**  
+  - Revue finale du serveur et correction des derniers bugs (**6 points**).  
+  **Total : 6 points**
+
+- **Ahibu :**  
+  - Documenter le système de cryptage et la gestion des tokens (**6 points**).  
+  **Total : 6 points**
+
+- **Thyago :**  
+  - Effectuer des tests finaux et rédiger la documentation sur le processus serveur (**6 points**).  
+  **Total : 6 points**
+
+- **User 5 :**  
+  - Documenter l'interface utilisateur et le processus client-serveur (**6 points**).  
+  **Total : 6 points**
+
+- **User 6 :**  
+  - Effectuer des tests finaux et rédiger la documentation sur le processus de tests et de validation (**6 points**).  
+  **Total : 6 points**
+
+---
