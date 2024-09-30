@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Modifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Modifier une image</h1>
+            <p>Utilisez les boutons pour appliquer des transformations à votre image.</p>
+        </div>
+
+        <input type="file" id="imageInput" accept="image/*" class="upload-button">
+
+        <div id="imageContainer">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="rotateImage()">Rotation</button>
+            <button class="btn" onclick="applyGrayscale()">Noir & Blanc</button>
+            <button class="btn" onclick="flipHorizontal()">Inversion Horizontale</button>
+            <button class="btn" onclick="resizeImage()">Redimensionner (50%)</button>
+            <button class="btn" onclick="adjustBrightness(20)">Augmenter Luminosité</button>
+            <button class="btn" onclick="adjustBrightness(-20)">Diminuer Luminosité</button>
+            <button class="btn" onclick="adjustContrast(20)">Augmenter Contraste</button>
+            <button class="btn" onclick="adjustContrast(-20)">Diminuer Contraste</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

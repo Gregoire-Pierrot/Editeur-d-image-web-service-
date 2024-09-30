@@ -8,28 +8,28 @@
 ## Client (Python)
 
 ### Fonctionnalités
-- [ ] Se connecter au serveur / 2
+- [X] **Hamza :** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
 
-- [ ] Prendre l'instruction de modification d'image / 1
+- [X] **Hamza :** : Prendre l'instruction de modification d'image / 1
 
-- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+- [ ] **Hamza :** : Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 
-- [ ] **Ahibu :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+- [X] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
 
 - [ ] **Ibrahim :** Faire une interface utilisateur / 12
 
 - [ ] Afficher l'image retournée du serveur / 4
 
-- [ ] **User5 :** Permettre l'enregistrement de l'image modifiée / 2
+- [ ]  Permettre l'enregistrement de l'image modifiée / 2
 
 ---
 
 ## Serveur (Java)
 
 ### Fonctionnalités
-- [x] **Pierrot :** Créer un serveur / 1
+- [x] **Gregoire :** Créer un serveur / 1
 
 - [ ] Accepter les nouvelles connexions et générer un token par client / 3
 
@@ -78,13 +78,13 @@ Commencer la connexion au serveur et commencer l'interface client.
 - [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 
-- [ ] **Ahibu :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+- [ ] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
 
 - [ ] **Ibrahim :** Faire une interface utilisateur / 12
 
 - [ ] Afficher l'image retournée du serveur / 4
 
-- [ ] **User5 :** Permettre l'enregistrement de l'image modifiée / 2
+- [ ] **Hamza :** Permettre l'enregistrement de l'image modifiée / 2
 
 ## Serveur (Java)
 
