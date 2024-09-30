@@ -1,7 +1,10 @@
 # Backlog Sprint 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Git
-- [x] Faire un répertoire git / 0
+- [x] **Grégoire** Faire un répertoire git / 0
+
+## Schema fonctionnement
+- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ---
 
@@ -29,7 +32,7 @@
 ## Serveur (Java)
 
 ### Fonctionnalités
-- [x] **Pierrot :** Créer un serveur / 1
+- [x] **Grégoire :** Créer un serveur / 1
 
 - [ ] Accepter les nouvelles connexions et générer un token par client / 3
 
