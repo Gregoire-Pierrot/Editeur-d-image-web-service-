@@ -3,7 +3,7 @@
 ## Git
 - [x] **Grégoire** Faire un répertoire git / 0
 
-## Schema fonctionnement
+## Schema interaction Client Serveur
 - [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ---
@@ -69,6 +69,9 @@
 
 **Objectif principal :**  
 Commencer la connexion au serveur et commencer l'interface client.
+
+## Schema interaction Client Serveur
+- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ## Client (Python)
 
