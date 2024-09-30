@@ -2,7 +2,7 @@
 
 ## Git
 - [x] **Grégoire** Faire un répertoire git / 1
-- [x] **Grégoire** Gestion du dépot git / 1
+- [x] **Grégoire** Gestion du dépot git / ( à definir )
 
 ## Schema interaction Client Serveur
 - [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
@@ -15,9 +15,9 @@
 - [X] **Hamza :** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
 
-- [X] **Hamza :** : Prendre l'instruction de modification d'image / 1
+- [X] Prendre l'instruction de modification d'image / 1
 
-- [ ] **Hamza :** : Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 
 - [X] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
@@ -71,32 +71,40 @@
 **Objectif principal :**  
 Commencer la connexion au serveur et commencer l'interface client.
 
+## Git
+- [x] **Grégoire** Faire un répertoire git / 1
+- [x] **Grégoire** Gestion du dépot git / ( à definir )
+
 ## Schema interaction Client Serveur
 - [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
+
+---
 
 ## Client (Python)
 
 ### Fonctionnalités
-- [ ] **Pierrot :** Se connecter au serveur / 2
+- [X] **Hamza :** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
 
-- [ ] Prendre l'instruction de modification d'image / 1
+- [X] Prendre l'instruction de modification d'image / 1
 
 - [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 
-- [ ] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+- [X] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
 
 - [ ] **Ibrahim :** Faire une interface utilisateur / 12
 
 - [ ] Afficher l'image retournée du serveur / 4
 
-- [ ] **Hamza :** Permettre l'enregistrement de l'image modifiée / 2
+- [ ]  Permettre l'enregistrement de l'image modifiée / 2
+
+---
 
 ## Serveur (Java)
 
 ### Fonctionnalités
-- [x] **Pierrot :** Créer un serveur / 1
+- [x] **Grégoire :** Créer un serveur / 1
 
 - [ ] Accepter les nouvelles connexions et générer un token par client / 3
 
@@ -115,6 +123,8 @@ Commencer la connexion au serveur et commencer l'interface client.
 
 - [ ] Renvoyer au client l'image modifiée / 12
 
+---
+
 ## Sécurité
 - [ ] Cryptage des requêtes / 12
   - [ ] Vérifier le cryptage des requêtes / 1
@@ -122,11 +132,9 @@ Commencer la connexion au serveur et commencer l'interface client.
 ---
 
 ### Total des points
-- **Points terminés** : 3 points
-- **Points non terminés** : 45 points
-- **Total des points pour Sprint 2** : **52 points**
-
----
+- **Points terminés** : 1 points
+- **Points non terminés** : 34 points
+- **Total des points pour Sprint 1** : **35 points**
 
 # Backlog Sprint 3 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
