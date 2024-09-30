@@ -1,7 +1,10 @@
 # Backlog Sprint 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Git
-- [x] Faire un répertoire git / 0
+- [x] **Grégoire** Faire un répertoire git / 0
+
+## Schema interaction Client Serveur
+- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ---
 
@@ -29,7 +32,7 @@
 ## Serveur (Java)
 
 ### Fonctionnalités
-- [x] **Gregoire :** Créer un serveur / 1
+- [x] **Grégoire :** Créer un serveur / 1
 
 - [ ] Accepter les nouvelles connexions et générer un token par client / 3
 
@@ -66,6 +69,9 @@
 
 **Objectif principal :**  
 Commencer la connexion au serveur et commencer l'interface client.
+
+## Schema interaction Client Serveur
+- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ## Client (Python)
 
