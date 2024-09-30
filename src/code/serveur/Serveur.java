@@ -37,12 +37,11 @@ public final class Serveur {
                 Serveur serveur = getInstance(args[0], Integer.parseInt(args[1]));
                 serveur.serveurStart();
             } catch (Exception e) {
-                System.out.println("Error Synthaxe : java Serveur ip port");
+                System.out.println("Error on ip or port");
             }
         }
         else {
             System.out.println("Error Synthaxe : java Serveur ip port");
-            System.out.println("here");
         }
     }
 

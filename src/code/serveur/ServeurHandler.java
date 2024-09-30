@@ -2,14 +2,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.Random;
 
 public class ServeurHandler extends Thread{
 
     private Socket client;
-
-    private Random random = new Random();
-    private final double token = random.nextDouble(Math.pow(2, 32));
 
     public ServeurHandler(Socket client){
         this.client = client;
@@ -23,10 +19,10 @@ public class ServeurHandler extends Thread{
             byte[] buffer = new byte[8196];
             int bytes = 0;
 
-            if ((bytes = input.read(buffer)) != -1) {
-                Serveur.echoMessage("\nNew connection from " + this.client.getInetAddress() + "\n");
+            Serveur.echoMessage("\nNew connection from " + this.client.getInetAddress() + "\n");
 
-                output.write(new String("Connected. Here your token : " + token).getBytes());
+            if ((bytes = input.read(buffer)) != -1) {
+                output.write(new String("Connected.").getBytes());
             }
     
             while ((bytes = input.read(buffer)) != -1) {
