@@ -5,7 +5,7 @@
 - [x] **Grégoire** Gestion du dépot git / ( à definir )
 
 ## Schema interaction Client Serveur
-- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
+- [X] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ---
 
@@ -33,22 +33,22 @@
 ## Serveur (Java)
 
 ### Fonctionnalités
-- [x] **Grégoire :** Créer un serveur / 1
+- [x] **Grégoire** : Créer un serveur / 1
 
-- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [X] **Ahibou & Grégoire** : Accepter les nouvelles connexions et générer un token par client / 3
 
-- [ ] Recevoir une requête de la forme : [token] [image] [instruction] / 1
+- [X] **Ahibou** : Recevoir une requête de la forme : [token] [image] [instruction] / 1
 
-- [ ] Vérifier la validité du token / 1
+- [X] **Ahibou** : Vérifier la validité du token / 1
 
-- [ ] Différencier l'instruction / 1
+- [X] **Ahibou & Grégoire** : Différencier l'instruction / 1
 
-- [ ] Modifier l'image / 12
-  - [ ] **Rotation à gauche** / 3
-  - [ ] **Rotation à droite** / 3
-  - [ ] **Inversion horizontale** / 3
-  - [ ] **Inversion verticale** / 3
-  - [ ] **Noir & blanc** / 3
+- [X] **Tiago** : Modifier l'image / 12
+  - [X] **Rotation à gauche** / 3
+  - [X] **Rotation à droite** / 3
+  - [X] **Inversion horizontale** / 3
+  - [X] **Inversion verticale** / 3
+  - [X] **Noir & blanc** / 3
 
 - [ ] Renvoyer au client l'image modifiée / 12
 
