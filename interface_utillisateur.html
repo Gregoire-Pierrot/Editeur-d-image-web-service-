@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur d'Images</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Éditeur d'Images</h1>
+    </header>
+    <main>
+        <input type="file" id="imageInput" accept="image/*">
+        <canvas id="imageCanvas"></canvas>
+        <div id="controls">
+            <button id="rotateLeft">Rotation à gauche</button>
+            <button id="rotateRight">Rotation à droite</button>
+            <label>
+                <input type="checkbox" id="invertColors"> Inverser les couleurs
+            </label>
+            <label>
+                <input type="checkbox" id="blackWhite"> Noir et blanc
+            </label>
+            <button id="applyChanges">Appliquer les modifications</button>
+            <button id="saveImage">Sauvegarder l'image</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
