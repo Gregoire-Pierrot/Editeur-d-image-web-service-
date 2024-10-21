@@ -1,30 +1,26 @@
+import requests
+import base64
 import sys
 import socket
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox, QFileDialog, QMessageBox, QLineEdit
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
-
-
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem
 
 class ImageSelector(QWidget):
 
     def __init__(self):
         super().__init__()
 
-        # Connexion au serveur
-        client_socket.connect(('localhost', 1234))
-        # print(f"Success: connexion with server")
-
         self.layout = QVBoxLayout()
         self.layout.setAlignment(Qt.AlignCenter)
 
+        # Label et bouton pour l'image
         self.image_label = QLabel('No Image Selected', self)
         self.image_label.setAlignment(Qt.AlignCenter)
         self.image_label.setStyleSheet('color: white; border: 2px solid white; padding: 10px;')
         self.layout.addWidget(self.image_label)
 
-        # Bouton pour sélectionner une image
         self.select_image_button = QPushButton('Select Image', self)
         self.select_image_button.setStyleSheet(
             'background-color: #555; color: white; border: 2px solid white; padding: 10px; min-width: 200px;'
@@ -32,13 +28,23 @@ class ImageSelector(QWidget):
         self.layout.addWidget(self.select_image_button)
         self.select_image_button.clicked.connect(self.open_image_dialog)
 
-        # Menu déroulant (combobox) avec des choix d'instructions
-        self.combo_box = QComboBox(self)
-        self.combo_box.setStyleSheet(
-            'background-color: #555; color: white; border: 2px solid white; padding: 5px; min-width: 200px;'
+        # Champ pour saisir le token
+        self.token_input = QLineEdit(self)
+        self.token_input.setPlaceholderText("Enter your token here")
+        self.token_input.setStyleSheet('color: white; background-color: #333; padding: 10px; border: 2px solid white;')
+        self.layout.addWidget(self.token_input)
+
+        # Création de la QListWidget
+        self.list_widget = QListWidget(self)
+        self.list_widget.setStyleSheet(
+            'background-color: #555; color: white; border: 2px solid white; padding: 5px;'
         )
-        self.combo_box.addItems(['Instruction 1', 'Instruction 2', 'Instruction 3'])
-        self.layout.addWidget(self.combo_box)
+        self.list_widget.setSelectionMode(QListWidget.MultiSelection)
+        instructions = ['rotate_left', 'rotate_right', 'inverse', 'b&w', 'grayscale']
+        for instruction in instructions:
+            item = QListWidgetItem(instruction)
+            self.list_widget.addItem(item)
+        self.layout.addWidget(self.list_widget)
 
         # Bouton pour commencer le traitement
         self.process_button = QPushButton('Send to Server', self)
@@ -52,72 +58,81 @@ class ImageSelector(QWidget):
         self.setLayout(self.layout)
         self.setWindowTitle('Image Selector and Choices')
         self.setStyleSheet('background-color: black;')
-        self.setFixedSize(400, 500)
+        self.setFixedSize(400, 550)
 
         # Variable pour stocker le chemin de l'image sélectionnée
         self.image_path = None
 
     def open_image_dialog(self):
-        # Ouvre une boîte de dialogue pour sélectionner un fichier image
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getOpenFileName(self, 'Select Image', '', 'Images (*.png *.xpm *.jpg)', options=options)
 
-        # Si un fichier est sélectionné, on l'affiche et on stocke le chemin
         if file_name:
             pixmap = QPixmap(file_name)
             self.image_label.setPixmap(pixmap.scaled(300, 200, Qt.KeepAspectRatio))
             self.image_path = file_name
 
+    def client(self, image_path, modifications, token):
+        mods = ["rotate_left", "rotate_right", "inverse", "b&w", "grayscale"]
+
+        with open(image_path , "rb") as image_file:
+            encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
+
+        adresse = "http://10.126.7.74:5000/modification"
+        data = {
+            'token': token,
+            'encoded_image': encoded_image,
+            'modifications': modifications
+        }
+        for modification in modifications:
+            if modification not in mods:
+                print("Erreur sur une modification.")
+                return
+
+        response = requests.post(adresse, json=data)
+        decoded_image = base64.b64decode(response.text)
+        return decoded_image
+
+    def save_decoded_image(self, decoded_image, image_path, modifications):
+        modifications_string = "_".join(modifications)
+        output_file = image_path.rsplit('.', 1)[0] + "_" + modifications_string + ".png"
+        try:
+            with open(output_file, "wb") as decoded_image_file:
+                decoded_image_file.write(decoded_image)
+            print(f"Image saved as: {output_file}")
+            return output_file
+        except Exception as e:
+            print(f"Error saving image: {str(e)}")
+            return None
+
     def start_processing(self):
-        # Vérification si une image est sélectionnée
         if self.image_path is None:
             QMessageBox.warning(self, 'Warning', 'Please select an image before sending to the server.')
             return
 
-        # Récupération du choix de l'utilisateur dans la combobox
-        selected_instruction = self.combo_box.currentText()
+        token = self.token_input.text()
+        if not token:
+            QMessageBox.warning(self, 'Warning', 'Please enter a valid token.')
+            return
 
-        # Envoi de l'image, instruction et token JWT au serveur
+        selected_items = self.list_widget.selectedItems()
+        modifications = [item.text() for item in selected_items]
+
+        if not modifications:
+            QMessageBox.warning(self, 'Warning', 'Please select at least one modification before sending to the server.')
+            return
+
         try:
-            self.send_image_and_instruction(self.image_path, selected_instruction)
-            QMessageBox.information(self, 'Success', 'Image and instruction sent to server!')
+            decoded_image = self.client(self.image_path, modifications, token)
+            if decoded_image:
+                pixmap = QPixmap()
+                pixmap.loadFromData(decoded_image)
+                self.image_label.setPixmap(pixmap.scaled(300, 200, Qt.KeepAspectRatio))
+                QMessageBox.information(self, 'Success', 'Image and instruction sent to server!')
+            else:
+                QMessageBox.information(self, 'failed', 'Failed to process image on the server.')
         except Exception as e:
             QMessageBox.critical(self, 'Error', f'Failed to send data to server: {str(e)}')
-
-    def send_image_and_instruction(self, image_path, instruction):
-        
-
-        
-        jwt_token = 'token'
-
-
-        #response = client_socket.recv(1024)
-        #print(f"Réponse 1 du serveur: {response.decode('ISO-8859-1')}")
-
-        # Attendre que le serveur envoie le token
-        #response = client_socket.recv(1024)
-        #jwt_token = response.decode('ISO-8859-1').replace("Votre token est ", "")
-        #print(f"Token reçu du serveur : {jwt_token}")
-
-        # Lire l'image en binaire
-        with open(image_path, 'rb') as image_file:
-            image_data = image_file.read()
-
-        # Encoder l'instruction et le token JWT
-        instruction_data = instruction.encode('ISO-8859-1')
-        token_data = jwt_token.encode('ISO-8859-1')
-
-
-        separator = b" "
-        requette = token_data + separator + instruction_data + separator + image_data
-        print('requette')
-        client_socket.sendall(requette)  # Envoyer la requette
-
-
-        response = client_socket.recv(1024)
-        print(f"Réponse du serveur: {response.decode('ISO-8859-1')}")
-
-        client_socket.close()
 
 app = QApplication(sys.argv)
 window = ImageSelector()
