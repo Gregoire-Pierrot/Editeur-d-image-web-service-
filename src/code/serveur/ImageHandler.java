@@ -2,6 +2,15 @@
  * File ImageHandler.java
  * @author Tiago Feitosa
  * @version 1.1
+ *
+ * Créez une instance de ImageHander en passant une image convertie en base64 (String) pour le constructeur.
+ * Utilisez la méthode getModifiedImage pour récupérer l'image modifiée au format String.
+ * Utilisez ImageHandler.Instruction.<instruction> comme paramètre pour l'instruction souhaitée.
+ *
+ * Create an instance of ImageHander passing an image converted to base64(String) for the constructor
+ * Use method getModifiedImage to get processed image back in String format.
+ * Use ImageHandler.Instruction.<instruction> as paremeter for the desire instruction.
+ *
  */
 
 import javax.imageio.ImageIO;
@@ -37,7 +46,6 @@ enum Orientation {
 public class ImageHandler {
 
     private String imageBase64;
-    private String processedImage;
 
     /**
      * Constructor
@@ -45,18 +53,17 @@ public class ImageHandler {
      */
     public ImageHandler(String imageBase64) {
         this.imageBase64 = imageBase64;
-        this.processedImage = null;
     }
 
     /**
      * Méthode publique pour récupérer l'image modifiée
-     * Public Mehtod to return the modified image
+     * elle renverra une valeur null si la conversion échoue
+     * Public Method to return the modified image
      * @param instruction - Enum
-     * @return string - Modified image
+     * @return string - Modified image, Will return null if conversion is unsuccessful
      */
     public String getModifiedImage(Instruction instruction) {
-        processedImage = processImage(imageBase64, instruction);
-        return processedImage;
+        return processImage(imageBase64, instruction);
     }
 
     /**
@@ -87,13 +94,12 @@ public class ImageHandler {
             String encodedModifiedImage = Base64.getEncoder().encodeToString(output.toByteArray());
             System.out.println("Image processed successfully.");
             return encodedModifiedImage;
+
         } catch (IOException e) {
             System.out.println("Error processing the image: " + e.getMessage());
             return null;
         }
     }
-
-
 
     /**
      * Method to turn image black and white
@@ -127,7 +133,9 @@ public class ImageHandler {
     private BufferedImage rotateImage(BufferedImage img, double angle) {
         int width = img.getWidth();
         int height = img.getHeight();
-//        BufferedImage rotatedImage = new BufferedImage(height, width, img.getType());
+        // Étant donné que nous échangeons la hauteur contre la largeur, il est possible de saisir la hauteur à la place
+        // de la largeur et vice versa
+        // Because we are swapping height and width, it is ok to enter height in place of width and vice versa
         @SuppressWarnings("SuspiciousNameCombination")
         BufferedImage rotatedImage = new BufferedImage(height, width, img.getType());
         Graphics2D g2d = rotatedImage.createGraphics();
@@ -188,7 +196,7 @@ public class ImageHandler {
     // If processing is successful, a processed image file will be created on the main folder named: output_image.jpg
     // Si le traitement réussit, un fichier image traité sera créé dans le dossier principal nommé : output_image.jpg
 
-    /**
+    /*
      * Process image and save to main folder for future use
      * @param imageBase64
      * @param instruction
