@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/gregoire/Bureau/Cours/Post Bac/M1 - Ilsen/S1/Processus du developpement logiciel/Editeur-d-image-web-service-/src/code/serveur/Flask/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

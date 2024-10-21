@@ -1,0 +1,305 @@
+# Backlog Sprint 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Git
+- [x] **Grégoire** Faire un répertoire git / 1
+- [x] **Grégoire** Gestion du dépot git / ( à definir )
+
+## Schema interaction Client Serveur
+- [X] **Grégoire** Faire un schema du fonctionnement du Web-Service
+
+---
+
+## Client (Python)
+
+### Fonctionnalités
+- [X] **Hamza :** : Se connecter au serveur / 2
+  - [ ] **Test** : Vérifier la connexion au serveur / 1
+
+- [X] Prendre l'instruction de modification d'image / 1
+
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+
+- [X] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+
+- [ ] **Ibrahim :** Faire une interface utilisateur / 12
+
+- [ ] Afficher l'image retournée du serveur / 4
+
+- [ ]  Permettre l'enregistrement de l'image modifiée / 2
+
+---
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [x] **Grégoire** : Créer un serveur / 1
+
+- [X] **Ahibou & Grégoire** : Accepter les nouvelles connexions et générer un token par client / 3
+
+- [X] **Ahibou** : Recevoir une requête de la forme : [token] [image] [instruction] / 1
+
+- [X] **Ahibou** : Vérifier la validité du token / 1
+
+- [X] **Ahibou & Grégoire** : Différencier l'instruction / 1
+
+- [X] **Tiago** : Modifier l'image / 12
+  - [X] **Rotation à gauche** / 3
+  - [X] **Rotation à droite** / 3
+  - [X] **Inversion horizontale** / 3
+  - [X] **Inversion verticale** / 3
+  - [X] **Noir & blanc** / 3
+
+- [ ] Renvoyer au client l'image modifiée / 12
+
+---
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 1 points
+- **Points non terminés** : 34 points
+- **Total des points pour Sprint 1** : **35 points**
+
+
+# Backlog Sprint 2 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**Objectif principal :**  
+Commencer la connexion au serveur et commencer l'interface client.
+
+## Git
+- [x] **Grégoire** Faire un répertoire git / 1
+- [x] **Grégoire** Gestion du dépot git / ( à definir )
+
+## Schema interaction Client Serveur
+- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
+
+---
+
+## Client (Python)
+
+### Fonctionnalités
+- [X] **Hamza :** : Se connecter au serveur / 2
+  - [ ] **Test** : Vérifier la connexion au serveur / 1
+
+- [X] Prendre l'instruction de modification d'image / 1
+
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+
+- [X] **Ahibou :** Faire une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) / 2
+
+- [ ] **Ibrahim :** Faire une interface utilisateur / 12
+
+- [ ] Afficher l'image retournée du serveur / 4
+
+- [ ]  Permettre l'enregistrement de l'image modifiée / 2
+
+---
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [x] **Grégoire :** Créer un serveur / 1
+
+- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+
+- [ ] Recevoir une requête de la forme : [token] [image] [instruction] / 1
+
+- [ ] Vérifier la validité du token / 1
+
+- [ ] Différencier l'instruction / 1
+
+- [ ] Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
+
+- [ ] Renvoyer au client l'image modifiée / 12
+
+---
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 1 points
+- **Points non terminés** : 34 points
+- **Total des points pour Sprint 1** : **35 points**
+
+# Backlog Sprint 3 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**Objectif principal :**  
+Finaliser les modifications d'image et avancer sur l'interface utilisateur.
+
+## Client (Python)
+
+### Fonctionnalités
+- [ ] Prendre l'instruction de modification d'image / 1
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+- [ ] Afficher l'image retournée du serveur / 4
+- [ ] Permettre l'enregistrement de l'image modifiée / 2
+- [ ] Faire une interface utilisateur / 12
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [ ] Recevoir une requête de la forme : [token] [image] [instruction] / 1
+- [ ] Vérifier la validité du token / 1
+- [ ] Différencier l'instruction / 1
+- [ ] Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
+- [ ] Renvoyer au client l'image modifiée / 12
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 0 points
+- **Points non terminés** : 66 points
+- **Total des points pour Sprint 3** : **66 points**
+
+---
+
+# Backlog Sprint 4 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**Objectif principal :**  
+Optimisation et ajout de nouvelles fonctionnalités.
+
+## Client (Python)
+
+### Fonctionnalités
+- [ ] Faire une interface utilisateur / 12
+- [ ] Permettre l'enregistrement de l'image modifiée / 2
+- [ ] Afficher l'image retournée du serveur / 4
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [ ] Vérifier la validité du token / 1
+- [ ] Différencier l'instruction / 1
+- [ ] Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
+- [ ] Renvoyer au client l'image modifiée / 12
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 0 points
+- **Points non terminés** : 28 points
+- **Total des points pour Sprint 4** : **28 points**
+
+---
+
+# Backlog Sprint 5 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**Objectif principal :**  
+Finalisation et intégration complète.
+
+## Client (Python)
+
+### Fonctionnalités
+- [ ] Faire une interface utilisateur / 12
+- [ ] Permettre l'enregistrement de l'image modifiée / 2
+- [ ] Afficher l'image retournée du serveur / 4
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [ ] Vérifier la validité du token / 1
+- [ ] Différencier l'instruction / 1
+- [ ] Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
+- [ ] Renvoyer au client l'image modifiée / 12
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 0 points
+- **Points non terminés** : 36 points
+- **Total des points pour Sprint 5** : **36 points**
+
+---
+
+# Backlog Sprint 6 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**Objectif principal :**  
+Test, validation finale et documentation.
+
+## Client (Python)
+
+### Fonctionnalités
+- [ ] Faire une interface utilisateur / 12
+- [ ] Permettre l'enregistrement de l'image modifiée / 2
+- [ ] Afficher l'image retournée du serveur / 4
+- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+
+## Serveur (Java)
+
+### Fonctionnalités
+- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [ ] Vérifier la validité du token / 1
+- [ ] Différencier l'instruction / 1
+- [ ] Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
+- [ ] Renvoyer au client l'image modifiée / 12
+
+## Sécurité
+- [ ] Cryptage des requêtes / 12
+  - [ ] Vérifier le cryptage des requêtes / 1
+
+---
+
+### Total des points
+- **Points terminés** : 0 points
+- **Points non terminés** : 36 points
+- **Total des points pour Sprint 6** : **36 points**
