@@ -52,44 +52,25 @@ def add_user():
     finally:
         conn.close()
 
-# Route pour récupérer tous les utilisateurs (login et token uniquement, pas de mot de passe)
-@app.route('/users', methods=['GET'])
-def get_users():
+# Route pour vérifier si un token existe dans la base de données
+@app.route('/check_token', methods=['POST'])
+def check_token():
+    data = request.get_json()
+    token = data['token']
+    
     conn = sqlite3.connect('user.db')
     cursor = conn.cursor()
     
-    cursor.execute('SELECT login, token FROM users')  # Ne pas retourner le mot de passe
-    users = cursor.fetchall()
+    # Rechercher si le token existe dans la base de données
+    cursor.execute('SELECT * FROM users WHERE token = ?', (token,))
+    user = cursor.fetchone()
     
     conn.close()
     
-    # Retourner la liste des utilisateurs sous forme JSON
-    return jsonify(users)
-
-# Route pour authentifier un utilisateur et générer un token
-@app.route('/login', methods=['POST'])
-def login():
-    data = request.get_json()
-    login = data['login']
-    password = data['password']
-    
-    conn = sqlite3.connect('user.db')
-    cursor = conn.cursor()
-    
-    # Rechercher l'utilisateur par son login
-    cursor.execute('SELECT id, password FROM users WHERE login = ?', (login,))
-    user = cursor.fetchone()
-
-    if user and check_password_hash(user[1], password):
-        # Générer un token (pour l'exemple, on utilise juste un simple identifiant)
-        token = f'token_{user[0]}'
-        cursor.execute('UPDATE users SET token = ? WHERE id = ?', (token, user[0]))
-        conn.commit()
-        conn.close()
-        return jsonify({'message': 'Login successful', 'token': token})
+    if user:
+        return jsonify({'message': 'Token is valid', 'user': user[1]}), 200  # user[1] contient le login
     else:
-        conn.close()
-        return jsonify({'error': 'Invalid login or password'}), 401
+        return jsonify({'error': 'Token is invalid'}), 404
 
 if __name__ == '__main__':
     init_db()  # Initialiser la base de données
