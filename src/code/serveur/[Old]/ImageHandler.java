@@ -174,7 +174,7 @@ public class ImageHandler {
                     }
                 }
             }
-            default -> out.println("Unknown Orientation");
+            default -> System.out.println("Unknown Orientation");
         }
         return invertedImage;
     }
