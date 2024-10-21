@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 public class ServerManager {
 
     public static boolean isInstruction(String instruction) {
@@ -32,6 +34,12 @@ public class ServerManager {
             default:
                 return null;
         }
+    }
+
+    public static boolean transformImage(String insctructionString, String token){
+        Instruction instruction = stringToInstruction(insctructionString);
+        ImageHandler imageHandler = new ImageHandler();
+        return false;
     }
 
     public static boolean isImage(String image) {

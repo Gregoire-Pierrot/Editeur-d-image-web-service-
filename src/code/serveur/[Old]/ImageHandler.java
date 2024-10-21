@@ -20,11 +20,9 @@ enum Instruction {
 
 public class ImageHandler {
 
-    private final Socket clientSocket;
     private final PrintWriter out;
 
-    public ImageHandler(Socket clientSocket, PrintWriter out) {
-        this.clientSocket = clientSocket;
+    public ImageHandler(PrintWriter out) {
         this.out = out;
     }
 
@@ -47,7 +45,7 @@ public class ImageHandler {
                 default -> out.println("Unknown Instruction.");
             }
 
-            String outputPath = "output_image.jpg";
+            String outputPath = "./ressources/serveur/temporaire/output_image.jpg";
             File outputImage = new File(outputPath);
             ImageIO.write(processedImage, "jpg", outputImage);
 
@@ -121,18 +119,4 @@ public class ImageHandler {
         }
         return invertedImage;
     }
-
-    private void sendImageToClient(String processedImagePath) throws IOException {
-        File imageFile = new File(processedImagePath);
-        byte[] imageBytes = new byte[(int) imageFile.length()];
-        FileInputStream fileInputStream = new FileInputStream(imageFile);
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        bufferedInputStream.read(imageBytes, 0, imageBytes.length);
-
-        OutputStream outputStream = clientSocket.getOutputStream();
-        outputStream.write(imageBytes, 0, imageBytes.length);
-        outputStream.flush();
-        bufferedInputStream.close();
-    }
-
 }
