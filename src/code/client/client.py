@@ -2,7 +2,7 @@ import requests
 import base64
 import sys
 import socket
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox, QFileDialog, QMessageBox, QLineEdit
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QComboBox, QFileDialog, QMessageBox, QLineEdit
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem
@@ -12,15 +12,35 @@ class ImageSelector(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.modified_image = None
+
+        # Créer un layout principal
         self.layout = QVBoxLayout()
         self.layout.setAlignment(Qt.AlignCenter)
 
-        # Label et bouton pour l'image
+        # Créer un layout horizontal pour l'image et le bouton de sauvegarde
+        self.image_save_layout = QHBoxLayout()
+        self.image_save_layout.setAlignment(Qt.AlignCenter)
+
+        # Label pour l'image
         self.image_label = QLabel('No Image Selected', self)
         self.image_label.setAlignment(Qt.AlignCenter)
         self.image_label.setStyleSheet('color: white; border: 2px solid white; padding: 10px;')
-        self.layout.addWidget(self.image_label)
+        self.image_save_layout.addWidget(self.image_label)
 
+        # Bouton pour enregestrer l'image
+        self.save_button = QPushButton('Save', self)
+        self.save_button.setStyleSheet(
+            'background-color: grey; color: white; border: 2px solid white; padding: 10px;'
+        )
+        self.save_button.hide()
+        self.image_save_layout.addWidget(self.save_button)
+        self.save_button.clicked.connect(self.save_image)
+
+
+        self.layout.addLayout(self.image_save_layout)
+
+        # Bouton pour sélectionner l'image
         self.select_image_button = QPushButton('Select Image', self)
         self.select_image_button.setStyleSheet(
             'background-color: #555; color: white; border: 2px solid white; padding: 10px; min-width: 200px;'
@@ -30,11 +50,10 @@ class ImageSelector(QWidget):
 
         # Champ pour saisir le token
         self.token_input = QLineEdit(self)
-        self.token_input.setPlaceholderText("Enter your token here")
-        self.token_input.setStyleSheet('color: white; background-color: #333; padding: 10px; border: 2px solid white;')
+        self.token_input.setPlaceholderText("Enter your token ")
+        self.token_input.setStyleSheet('color: black; background-color: white; padding: 10px; border: 2px solid black;')
         self.layout.addWidget(self.token_input)
 
-        # Création de la QListWidget
         self.list_widget = QListWidget(self)
         self.list_widget.setStyleSheet(
             'background-color: #555; color: white; border: 2px solid white; padding: 5px;'
@@ -47,7 +66,7 @@ class ImageSelector(QWidget):
         self.layout.addWidget(self.list_widget)
 
         # Bouton pour commencer le traitement
-        self.process_button = QPushButton('Send to Server', self)
+        self.process_button = QPushButton('Start', self)
         self.process_button.setStyleSheet(
             'background-color: #555; color: white; border: 2px solid white; padding: 10px; min-width: 200px;'
         )
@@ -78,7 +97,7 @@ class ImageSelector(QWidget):
         with open(image_path , "rb") as image_file:
             encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-        adresse = "http://10.126.7.74:5000/modification"
+        adresse = "http://127.0.0.1:5000/modification"
         data = {
             'token': token,
             'encoded_image': encoded_image,
@@ -104,6 +123,42 @@ class ImageSelector(QWidget):
         except Exception as e:
             print(f"Error saving image: {str(e)}")
             return None
+        
+
+    def save_image(self):
+        if self.image_label.pixmap() is not None:
+        # Ouvrir un dialogue pour choisir l'emplacement et le nom du fichier avec plusieurs extensions
+            options = QFileDialog.Options()
+            file_name, selected_filter = QFileDialog.getSaveFileName(
+                self, 
+                "Save Image As", 
+                "", 
+                "PNG Files (*.png);;JPEG Files (*.jpg);;XPM Files (*.xpm);;All Files (*)", 
+                options=options
+            )
+
+            if file_name:
+                # Récupérer l'extension en fonction du filtre sélectionné
+                if selected_filter == "PNG Files (*.png)":
+                    extension = "PNG"
+                elif selected_filter == "JPEG Files (*.jpg)":
+                    extension = "JPG"
+                elif selected_filter == "XPM Files (*.xpm)":
+                    extension = "XPM"
+                else:
+                    extension = "PNG"  # Par défaut
+
+                try:
+                    # Enregistrer l'image avec l'extension sélectionnée
+                    self.image_label.pixmap().save(file_name, extension)
+                except Exception as e:
+                    QMessageBox.critical(self, 'Error', f'Failed to save image: {str(e)}')
+        else:
+            QMessageBox.warning(self, 'Warning', 'No image to save.')
+
+
+
+
 
     def start_processing(self):
         if self.image_path is None:
@@ -112,7 +167,7 @@ class ImageSelector(QWidget):
 
         token = self.token_input.text()
         if not token:
-            QMessageBox.warning(self, 'Warning', 'Please enter a valid token.')
+            self.token_input.setStyleSheet('color: red; background-color: white; padding: 10px; border: 2px solid white;')
             return
 
         selected_items = self.list_widget.selectedItems()
@@ -128,11 +183,16 @@ class ImageSelector(QWidget):
                 pixmap = QPixmap()
                 pixmap.loadFromData(decoded_image)
                 self.image_label.setPixmap(pixmap.scaled(300, 200, Qt.KeepAspectRatio))
-                QMessageBox.information(self, 'Success', 'Image and instruction sent to server!')
+                self.save_button.show()
+
             else:
                 QMessageBox.information(self, 'failed', 'Failed to process image on the server.')
         except Exception as e:
             QMessageBox.critical(self, 'Error', f'Failed to send data to server: {str(e)}')
+
+
+
+
 
 app = QApplication(sys.argv)
 window = ImageSelector()
