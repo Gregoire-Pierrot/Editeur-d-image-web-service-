@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Configuration # importation de la classe de configuration
-from fonctions.py import generate_token
+from fonctions import generate_token
 
 app = Flask(__name__)
 # __name__ indique la racine de l'application pour retrouver les ressources
