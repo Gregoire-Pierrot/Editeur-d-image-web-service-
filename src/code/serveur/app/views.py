@@ -2,9 +2,12 @@ import base64
 import os
 from flask import Flask, request
 from fonctions import verify_token, rotate, inverse, bw, grayscale
+from bdd import init_db, ajout_user
 from app import app
 
 mods = ["rotate_left", "rotate_right", "inverse", "b&w", "grayscale"]
+
+init_db()
 
 @app.route("/", methods=['GET'])
 def homepage():
@@ -73,3 +76,20 @@ def modification():
             return {"status": "error", "message": "Token invalide."}, 400
     else:
         return {"status": "error", "message": "Aucun token donné."}, 400
+
+@app.route("/add_user", methods=['POST'])
+def add_user():
+    data = request.get_json()
+    
+    if 'username' in data :
+        if 'password' in data :
+            username = data['username']
+            password = data['password']
+            try :
+                return ajout_user(username, password)
+            except sqlite3.IntegrityError:
+                return "erreur ajout user"
+        else:
+            return "error"
+    else:
+        return "error"

@@ -1,4 +1,5 @@
 import base64
+import secrets
 from io import BytesIO
 from PIL import Image
 

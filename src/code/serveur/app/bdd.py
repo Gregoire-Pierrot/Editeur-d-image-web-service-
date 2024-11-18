@@ -1,6 +1,5 @@
 import sqlite3
-from flask import Flask, request, jsonify
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from fonctions import generate_token
 
 def init_db():
@@ -9,7 +8,7 @@ def init_db():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        login TEXT UNIQUE NOT NULL,
+        username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
         token TEXT DEFAULT ''
     )
@@ -17,20 +16,43 @@ def init_db():
     
     conn.commit()
     conn.close()
+    
+def is_username_taken(username):
+    conn = sqlite3.connect('user.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM users")
+    result = cursor.fetchall()
+    
+    conn.close()
+    
+    usernames = [row[1] for row in result]
 
-def ajout_user(login, password):
-    # conn = sqlite3.connect('user.db')
-    # cursor = conn.cursor()
-    # hashed_login = generate_password_hash(login)
-    # hashed_password = generate_password_hash(password)
-    # token = generate_token()
-    # hashed_token = generate_password_hash(token)
-    # cursor.execute('''
-    # INSERT INTO users (login, password, token) 
-    # VALUES (?, ?, ?)
-    # ''', ( hashed_login, hashed_password, hashed_token))
-    # conn.commit()
-    # conn.close()
+    for user in usernames:
+        if user == username :
+            return True
+    return False
 
-    # return jsonify({'message': 'User added successfully'}), 201
 
+def ajout_user(username, password):
+    if is_username_taken(username):
+        print("Username already taken")
+        return {"status": "error", "message": "Username already taken."}, 400
+    conn = sqlite3.connect('user.db')
+    cursor = conn.cursor()
+    hashed_password = generate_password_hash(password)
+    token = generate_token()
+    hashed_token = generate_password_hash(token)
+    cursor.execute('''
+    INSERT INTO users (username, password, token)
+    VALUES (?, ?, ?)
+    ''', (username, hashed_password, hashed_token))
+    conn.commit()
+    conn.close()
+    
+    print("---------------------------")
+    print("New user added !")
+    print("Username : ", username)
+    print("---------------------------")
+    
+    return "user added"
