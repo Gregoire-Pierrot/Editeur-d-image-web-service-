@@ -1,8 +1,7 @@
 import sqlite3
 from flask import Flask, request, jsonify
 from werkzeug.security import generate_password_hash
-
-app = Flask(__name__)
+from fonctions import generate_token
 
 def init_db():
     conn = sqlite3.connect('user.db')
@@ -19,8 +18,19 @@ def init_db():
     conn.commit()
     conn.close()
 
+def ajout_user(login, password):
+    # conn = sqlite3.connect('user.db')
+    # cursor = conn.cursor()
+    # hashed_login = generate_password_hash(login)
+    # hashed_password = generate_password_hash(password)
+    # token = generate_token()
+    # hashed_token = generate_password_hash(token)
+    # cursor.execute('''
+    # INSERT INTO users (login, password, token) 
+    # VALUES (?, ?, ?)
+    # ''', ( hashed_login, hashed_password, hashed_token))
+    # conn.commit()
+    # conn.close()
 
+    # return jsonify({'message': 'User added successfully'}), 201
 
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
