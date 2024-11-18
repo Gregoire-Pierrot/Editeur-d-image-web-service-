@@ -6,8 +6,8 @@
 Commencer le projet, se mettre d'accord sur le fonctionnement du web service.
 
 Choisir la technologie (langage) pour :
-- [X] Le **serveur** : java avec TCP-IP
-- [X] Le **client** : python
+- [X] **[Le groupe]** Le **serveur** : java avec TCP-IP
+- [X] **[Le groupe]** Le **client** : python
 
 #### Git
 - [x] **Grégoire** Faire un répertoire git | 1
