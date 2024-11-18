@@ -2,6 +2,14 @@ import base64
 from io import BytesIO
 from PIL import Image
 
+import secrets
+import base64
+
+
+def generate_token():
+    token_bytes = secrets.token_bytes(32)
+    return base64.b64encode(token_bytes).decode('utf-8')
+
 def verify_token(str):
     return True
 
