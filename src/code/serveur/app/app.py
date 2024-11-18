@@ -22,7 +22,7 @@ def add_user():
     try:
         cursor.execute('''
         INSERT INTO users (login, password, token) 
-        VALUES (?, ?, '')
+        VALUES (?, ?, ?)
         ''', (login, hashed_password, token))
         
         conn.commit()
