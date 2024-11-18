@@ -10,8 +10,6 @@ Une fois dedans, le client devra renseigner différents champs : son token, l'im
 Il aura ensuite la possiblité d'enregistrer cette nouvelle image.
 
 
-
-
 ## Pour pouvoir héberger un serveur veuillez suivre les instructions suivantes :
  - Créer un dossier "images" dans src/code/serveur/app
  - Télécharger Python 3.10.* ou plus
