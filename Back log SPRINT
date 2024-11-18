@@ -1,13 +1,11 @@
 # Backlog Sprint 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+**Objectif principal :**  
+Commencer le projet, se mettre d'accord sur le fonctionnement du web service.
+
 ## Git
 - [x] **Grégoire** Faire un répertoire git / 1
-- [x] **Grégoire** Gestion du dépot git / ( à definir )
-
-## Schema interaction Client Serveur
-- [X] **Grégoire** Faire un schema du fonctionnement du Web-Service
-
----
+- [x] **Grégoire** Gestion du dépot git / 1
 
 ## Client (Python)
 
@@ -26,7 +24,7 @@
 
 - [ ] Afficher l'image retournée du serveur / 4
 
-- [ ]  Permettre l'enregistrement de l'image modifiée / 2
+- [ ] Permettre l'enregistrement de l'image modifiée / 2
 
 ---
 
@@ -43,12 +41,12 @@
 
 - [X] **Ahibou & Grégoire** : Différencier l'instruction / 1
 
-- [X] **Tiago** : Modifier l'image / 12
-  - [X] **Rotation à gauche** / 3
-  - [X] **Rotation à droite** / 3
-  - [X] **Inversion horizontale** / 3
-  - [X] **Inversion verticale** / 3
-  - [X] **Noir & blanc** / 3
+- [ ] **Tiago** Modifier l'image / 12
+  - [ ] **Rotation à gauche** / 3
+  - [ ] **Rotation à droite** / 3
+  - [ ] **Inversion horizontale** / 3
+  - [ ] **Inversion verticale** / 3
+  - [ ] **Noir & blanc** / 3
 
 - [ ] Renvoyer au client l'image modifiée / 12
 
@@ -71,12 +69,8 @@
 **Objectif principal :**  
 Commencer la connexion au serveur et commencer l'interface client.
 
-## Git
-- [x] **Grégoire** Faire un répertoire git / 1
-- [x] **Grégoire** Gestion du dépot git / ( à definir )
-
 ## Schema interaction Client Serveur
-- [ ] **Grégoire** Faire un schema du fonctionnement du Web-Service
+- [x] **Grégoire** Faire un schema du fonctionnement du Web-Service
 
 ---
 
@@ -114,12 +108,12 @@ Commencer la connexion au serveur et commencer l'interface client.
 
 - [ ] Différencier l'instruction / 1
 
-- [ ] Modifier l'image / 12
-  - [ ] **Rotation à gauche** / 3
-  - [ ] **Rotation à droite** / 3
-  - [ ] **Inversion horizontale** / 3
-  - [ ] **Inversion verticale** / 3
-  - [ ] **Noir & blanc** / 3
+  - [X] **Tiago** : Modifier l'image / 12
+    - [X] **Rotation à gauche** / 3
+    - [X] **Rotation à droite** / 3
+    - [X] **Inversion horizontale** / 3
+    - [X] **Inversion verticale** / 3
+    - [X] **Noir & blanc** / 3
 
 - [ ] Renvoyer au client l'image modifiée / 12
 
@@ -184,30 +178,40 @@ Finaliser les modifications d'image et avancer sur l'interface utilisateur.
 
 
 **Objectif principal :**  
-Optimisation et ajout de nouvelles fonctionnalités.
+Reprendre le web service pour avoir des requettes HTTP.
+
+## Git
+Modification du git pour acceuillir le nouveau serveur
+- [X] **Grégoire** Modification du git pour chaque développeur
 
 ## Client (Python)
+Modification client, passage d'une connexion TCP-IP en requettes HTTP
 
 ### Fonctionnalités
-- [ ] Faire une interface utilisateur / 12
-- [ ] Permettre l'enregistrement de l'image modifiée / 2
-- [ ] Afficher l'image retournée du serveur / 4
-- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
-  - [ ] **Test** : Vérifier les formats d'image acceptés / 1
+- [X] **Hamza** Modifier le client déjà existant pour faire des requettes HTTP
+- [ ] **Hamza** Rajouter dans le client une zone de texte pour envoyer le token
+- [X] **Hamza** Tester la modification d'image avec le nouveau serveur
+- [ ] **Hamza** Enregistrer l'image modifié
 
-## Serveur (Java)
+
+## Serveur (Python)
+Modification du web service, passage en Python avec la librairie Flask
 
 ### Fonctionnalités
-- [ ] Accepter les nouvelles connexions et générer un token par client / 3
+- [X] **Grégoire** Créer un serveur Flask / 2
+- [X] **Grégoire** Créer une route acceptant et renvoiant des données sous format JSON / 3
 - [ ] Vérifier la validité du token / 1
-- [ ] Différencier l'instruction / 1
-- [ ] Modifier l'image / 12
-  - [ ] **Rotation à gauche** / 3
-  - [ ] **Rotation à droite** / 3
-  - [ ] **Inversion horizontale** / 3
-  - [ ] **Inversion verticale** / 3
-  - [ ] **Noir & blanc** / 3
-- [ ] Renvoyer au client l'image modifiée / 12
+- [X] **Grégoire** Vérifier la validité de l'image / 1
+- [X] **Grégoire** Différencier l'instruction / 1
+- [X] **Tiago** Modifier l'image / 6
+  - [X] Rotation à gauche / 1
+  - [X] Rotation à droite / 1
+  - [X] Inversion horizontale / 1
+  - [X] Inversion verticale / 1
+  - [X] Noir & blanc / 1
+  - [X] Nuance de gris / 1
+- [X] **Grégoire** Renvoyer au client l'image modifiée / 12
+- [X] Génération du token /2
 
 ## Sécurité
 - [ ] Cryptage des requêtes / 12

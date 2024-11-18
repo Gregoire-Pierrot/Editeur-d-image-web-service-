@@ -6,3 +6,8 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+.idea
+.vscode
+/src/code/serveur/Flask
+/src/code/serveur/app/__pycache__
