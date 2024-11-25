@@ -30,4 +30,7 @@ Amélioration et ajout de nouvelles fonctionnalités.
 - [ ] **Mouhamad** : BDD & Token / 6
 
 ### Total des points
+- **Points terminés** : 16 points
+- **Points non terminés** :  26 points
 
+---
