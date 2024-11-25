@@ -3,7 +3,7 @@
 ---
 
 **Objectif principal :**  
-Amélioration et ajout de nouvelles fonctionnalités.
+Debugage & améliorations de la partie BDD
 
 ## Git
 - [x] **Ibrahim** : Mis a jour Backlog / 10
