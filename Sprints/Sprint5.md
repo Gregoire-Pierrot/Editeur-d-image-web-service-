@@ -6,7 +6,7 @@
 Debugage & améliorations de la partie BDD
 
 ## Git
-- [x] **Ibrahim** : Mis a jour Backlog / 10
+- [x] **Ibrahim** : Mis a jour Backlog / 8
 - [x] **Grégoire** : Résolution probelme git / 2
 
 ## Client (Python)
