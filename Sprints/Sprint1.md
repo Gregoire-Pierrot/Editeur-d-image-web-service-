@@ -2,21 +2,25 @@
 
 ---
 
-**Objectif principal :**  
+## Objectif principal : 
 Commencer le projet, se mettre d'accord sur le fonctionnement du web service.
 
 Choisir la technologie (langage) pour :
 - [X] **[Le groupe]** Le **serveur** : java avec TCP-IP
 - [X] **[Le groupe]** Le **client** : python
 
-#### Git
+---
+
+### Git
 - [x] **Grégoire** Faire un répertoire git | 1
 - [x] **Grégoire** Gestion du dépot git | 1
+
+---
 
 ### Client (Python)
 
 #### Fonctionnalités
-- [X] **Hamza :** : Se connecter au serveur TCP-IP | 2
+- [X] **Hamza** : Se connecter au serveur TCP-IP | 2
   - [ ] **Test** : Vérifier la connexion au serveur | 1
 
 - [X] Prendre l'instruction de modification d'image | 1
@@ -48,11 +52,11 @@ Choisir la technologie (langage) pour :
 - [X] **Ahibou & Grégoire** : Différencier l'instruction / 1
 
 - [ ] **Tiago** Modifier l'image / 12
-  - [ ] **Rotation à gauche** / 3
-  - [ ] **Rotation à droite** / 3
-  - [ ] **Inversion horizontale** / 3
-  - [ ] **Inversion verticale** / 3
-  - [ ] **Noir & blanc** / 3
+  - [ ] Rotation à gauche / 3
+  - [ ] Rotation à droite / 3
+  - [ ] Inversion horizontale / 3
+  - [ ] Inversion verticale / 3
+  - [ ] Noir & blanc / 3
 
 - [ ] Renvoyer au client l'image modifiée / 12
 
@@ -65,6 +69,5 @@ Choisir la technologie (langage) pour :
 ---
 
 #### Total des points
-- **Points terminés** : 1 points
-- **Points non terminés** : 34 points
-- **Total des points pour Sprint 1** : **35 points**
+- **Points non terminés** : 80 points
+- **Points terminés** : 14 points
