@@ -6,14 +6,13 @@
 Reprendre le web service pour avoir des requêtes HTTP.
 
 ## Git
-- [x] **Grégoire** : Modification du git pour chaque développeur
+- [x] **Grégoire** : Modification du git pour chaque développeur /5
 
 ## Client (Python)
-Modification client, passage d'une connexion TCP-IP en requêtes HTTP.
 
 ### Fonctionnalités
-- [x] **Hamza** : Modifier le client déjà existant pour faire des requêtes HTTP
-- [ ] **Hamza** : Enregistrer l'image modifiée
+- [x] **Hamza** : Modifier le client déjà existant pour faire des requêtes HTTP / 2
+- [ ] **Hamza** : Enregistrer l'image modifiée / 3
 
 ## Serveur (Python)
 Modification du web service, passage en Python avec la librairie Flask.
@@ -25,7 +24,7 @@ Modification du web service, passage en Python avec la librairie Flask.
 - [x] **Grégoire** : Vérifier la validité de l'image / 1
 - [x] **Grégoire** : Différencier l'instruction / 1
 - [x] **Grégoire** : Renvoyer au client l'image modifiée / 12
-- [x] Génération du token / 2
+- [x] **Mouhamad** : Génération du token / 2
 
 ## Sécurité
 - [ ] Cryptage des requêtes / 12
@@ -33,11 +32,10 @@ Modification du web service, passage en Python avec la librairie Flask.
 
 ## BDD
 - [x] **Ibrahim** : Création BDD / 2
-- [ ] **Ibrahim** : Configuration routes + fonctions / 7
+- [x] **Ibrahim** : Configuration routes + fonctions / 7
 
 ### Total des points
-- **Points terminés** : 0 points
-- **Points non terminés** : 28 points
-- **Total des points pour Sprint 3** : **28 points**
+- **Points terminés** : 37 points
+- **Points non terminés** :  17 points
 
 ---
