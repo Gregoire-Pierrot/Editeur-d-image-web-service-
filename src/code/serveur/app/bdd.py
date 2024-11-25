@@ -21,12 +21,12 @@ def is_username_taken(username):
     conn = sqlite3.connect('user.db')
     cursor = conn.cursor()
     
-    cursor.execute("SELECT * FROM users")
+    cursor.execute("SELECT username FROM users")
     result = cursor.fetchall()
     
     conn.close()
     
-    usernames = [row[1] for row in result]
+    usernames = [row[0] for row in result]
 
     for user in usernames:
         if user == username :
@@ -55,4 +55,5 @@ def ajout_user(username, password):
     print("Username : ", username)
     print("---------------------------")
     
-    return "user added"
+    print("Token : " + token)
+    return "You have been added\nYour token : " + token

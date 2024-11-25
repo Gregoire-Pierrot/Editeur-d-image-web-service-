@@ -2,14 +2,29 @@ import base64
 import secrets
 from io import BytesIO
 from PIL import Image
+import sqlite3
+from werkzeug.security import check_password_hash
 
 
 def generate_token():
     token_bytes = secrets.token_bytes(32)
     return base64.b64encode(token_bytes).decode('utf-8')
     
-def verify_token(str):
-    return True
+def verify_token(token):
+    conn = sqlite3.connect('user.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+    
+    conn.close()
+    
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if check_password_hash(hashed_token, token) :
+            return True
+    return False
 
 def rotate(angle):
     with Image.open("images/image_recue.png") as img:
