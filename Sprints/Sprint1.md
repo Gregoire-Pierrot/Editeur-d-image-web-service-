@@ -30,7 +30,7 @@ Choisir la technologie (langage) pour :
 
 - [X] **Ahibou :** Voir comment faire (+ tester) une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) | 2
 
-- [ ] Faire une interface utilisateur | 12
+- [ ] **Ibrahim :** Faire une interface utilisateur | 12
 
 - [ ] Afficher l'image retournée du serveur | 4
 
@@ -71,3 +71,4 @@ Choisir la technologie (langage) pour :
 #### Total des points
 - **Points non terminés** : 80 points
 - **Points terminés** : 14 points
+
