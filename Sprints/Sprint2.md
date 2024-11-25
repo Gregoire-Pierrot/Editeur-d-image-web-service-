@@ -6,18 +6,18 @@
 Commencer la connexion au serveur et commencer l'interface client.
 
 ## Schéma interaction Client-Serveur
-- [x] **Grégoire** : Faire un schéma du fonctionnement du Web-Service
+- [x] **Grégoire** : Faire un schéma du fonctionnement du Web-Service / 3
 
 ## Client (Python)
 
 ### Fonctionnalités
 - [x] **Hamza** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
-- [x] Prendre l'instruction de modification d'image / 1
+- [x] **Grégoire** :Prendre l'instruction de modification d'image / 1
 - [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 - [x] **Ahibou** : Faire une requête au serveur avec l'image, l'instruction et le token (JWT) / 2
-- [ ] **Ibrahim** : Faire une interface utilisateur / 12
+- [x] **Ibrahim** : Faire une interface utilisateur / 12
 - [ ] Afficher l'image retournée du serveur / 4
 - [ ] Permettre l'enregistrement de l'image modifiée / 2
 
@@ -43,7 +43,6 @@ Commencer la connexion au serveur et commencer l'interface client.
 
 ### Total des points
 - **Points terminés** : 1 point
-- **Points non terminés** : 34 points
 - **Total des points pour Sprint 2** : **35 points**
 
 ---
