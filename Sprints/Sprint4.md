@@ -2,35 +2,47 @@
 
 ---
 
-**Objectif principal :**  
+## Objectif principal :
 Amélioration et ajout de nouvelles fonctionnalités.
 
-## Git
-- [x] **Grégoire & Ibrahim** : Modification du git pour chaque développeur / 5
-- [x] **Grégoire & Ibrahim** : Nettoyage dépôt git (merge des branches & suppression des branches inutiles) / 5
+---
 
-## Client (Python)
+### Git
+- [x] **Grégoire & Ibrahim** : Modification du git pour chaque développeur | **5 points**
+- [x] **Grégoire & Ibrahim** : Nettoyage dépôt git (merge des branches & suppression des branches inutiles) | **5 points**
 
-### Fonctionnalités
-- [x] **Hamza** : Ajouter dans le client une zone de texte pour envoyer le token / 2
-- [x] **Hamza** : Enregistrer l'image modifiée / 3
+---
 
-## Serveur (Python)
+### Client (Python)
 
-### Fonctionnalités
-- [x] **Mouhamed** : Vérifier la validité du token / 1
+#### Fonctionnalités
+- [x] **Hamza** : Ajouter dans le client une zone de texte pour envoyer le token | **2 points**
+- [x] **Hamza** : Enregistrer l'image modifiée | **3 points**
 
-## Sécurité
-- [ ] Cryptage des requêtes / 12
-  - [ ] Vérifier le cryptage des requêtes / 1
+---
 
-## BDD
-- [ ] **Ibrahim** : Améliorations des fonctions BDD / 2
-- [ ] **Grégoire** : Debugage routes BDD / 5
-- [ ] **Mouhamad** : BDD & Token / 6
+### Serveur (Python)
+
+#### Fonctionnalités
+- [x] **Ahibou** : Vérifier la validité du token | **1 point**
+
+---
+
+### Sécurité
+- [ ] Cryptage des requêtes | **12 points**
+  - [ ] Vérifier le cryptage des requêtes | **1 point**
+
+---
+
+### BDD
+- [ ] **Ibrahim** : Améliorations des fonctions BDD | **2 points**
+- [ ] **Grégoire** : Debugage routes BDD | **5 points**
+- [ ] **Ahibou** : BDD & Token | **6 points**
+
+---
 
 ### Total des points
-- **Points terminés** : 16 points
-- **Points non terminés** :  26 points
+- **Points terminés** : 16 / 42 points
+- **Points non terminés** :  26 / 42 points
 
 ---
