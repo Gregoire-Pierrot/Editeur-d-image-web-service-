@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block body %}
+    <div class="login_register_form">
+        <form novalidate method="POST" action="{{url_for('register')}}">
+            <h3>Inscription</h3>
+            {{ form.csrf_token }}
+            <div class="form_container">
+                <label>Email</label>
+                {{ form.email(class_="form-control", id="email") }}<br>
+                {% if form.email.errors %}
+                    <p>{{ form.email.errors[0] }}</p>
+                {% endif %}
+                {% if email_t %}
+                    <p>* Cet email est déjà pris *</p>
+                {% endif %}
+
+                <label>Nom d'utilisateur</label>
+                {{ form.username(class_="form-control", id="username") }}<br>
+                {% if form.username.errors %}
+                    <p>{{ form.username.errors[0] }}</p>
+                {% endif %}
+                {% if username_t %}
+                    <p>* Ce nom d'utilisateur est déjà pris *</p>
+                {% endif %}
+
+                <label>Mot de passe</label>
+                {{ form.password(class_="form-control", id="password") }}<br>
+                {% if form.password.errors %}
+                    <p>{{ form.password.errors[0] }}</p>
+                {% endif %}
+
+                <label>Confirmation du mot de passe</label>
+                {{ form.confirm(class_="form-control", id="confirm") }}<br>
+                {% if form.confirm.errors %}
+                    <p>{{ form.confirm.errors[0] }}</p>
+                {% endif %}
+            </div>
+            <button class="submit" type="submit">S'inscrire</button>
+            <p>Vous avez déjà un compte ? Cliquez ici --> <a href="{{url_for('login')}}">Connexion</a> !</p>
+        </form>
+    </div>
+{% endblock %}

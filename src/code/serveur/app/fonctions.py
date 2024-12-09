@@ -1,17 +1,48 @@
 import base64
 from io import BytesIO
 from PIL import Image
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 import secrets
 import base64
 
 
-def generate_token():
-    token_bytes = secrets.token_bytes(32)
-    return base64.b64encode(token_bytes).decode('utf-8')
+def generate_token(username):
+    token = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
+    
+    while verify_token(token):
+        token = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
+        
+    hashed_token = generate_password_hash(token)
+        
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    UPDATE users SET token = ? WHERE username = ?
+    ''', (hashed_token, username))
+    conn.commit()
+    conn.close()
+    
+    print("new token : ", token)
+    return token
 
-def verify_token(str):
-    return True
+def verify_token(token):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+    
+    conn.close()
+    
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if check_password_hash(hashed_token, token) :
+            return True
+    return False
 
 def rotate(angle):
     with Image.open("images/image_recue.png") as img:
@@ -57,3 +88,110 @@ def grayscale():
             image_file.write(image_data)
         
         return 1
+
+def getBolByEmail(email):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT username FROM users")
+    result = cursor.fetchall()
+    
+    conn.close()
+
+    emails = [row[0] for row in result]
+
+    for user in emails:
+        if user == email :
+            print("Email already taken")
+            return True
+    return False
+
+def getBolByUsername(username):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT username FROM users")
+    result = cursor.fetchall()
+    
+    conn.close()
+
+    usernames = [row[0] for row in result]
+
+    for user in usernames:
+        if user == username :
+            print("Username already taken")
+            return True
+    return False
+
+def getUsernameByEmail(email):
+    conn = sqlite3.connect('datab.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    row = cursor.execute("SELECT username FROM users WHERE email = ?", (email,)).fetchone()
+
+    conn.close()
+
+    if row :
+        return row['username']
+    return None
+
+def getEmailByUsername(username):
+    conn = sqlite3.connect('datab.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    row = cursor.execute("SELECT email FROM users WHERE username = ?", (username,)).fetchone()
+
+    conn.close()
+
+    if row :
+        return row['email']
+    return None
+
+def CheckEmail(email):
+    conn = sqlite3.connect('datab.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    e = cursor.execute("SELECT email FROM users WHERE email = ?", (email,)).fetchone()
+
+    return (e is not None and e == email)
+
+def CheckIfLoginRight(email, password):
+    conn = sqlite3.connect('datab.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    print("ici 1")
+    user = cursor.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+    print("ici 2")
+
+    conn.close()
+
+    if user is None:
+        return False
+    
+    print("ici 3")
+    return check_password_hash(user['password'], password)
+
+def Register(email, username, password):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    # At this point, the email and the username were alwready verified.
+
+    hashed_password = generate_password_hash(password)
+    cursor.execute('''
+    INSERT INTO users (email, username, password)
+    VALUES (?, ?, ?)
+    ''', (email, username, hashed_password))
+    conn.commit()
+    conn.close()
+    
+    print("---------------------------")
+    print("New user added !")
+    print("Username : ", username)
+    print("---------------------------")
+    
+    return True

@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block body %}
+    <div>
+        <p>Bonjour {{username}} !<br>email : {{email}}.</p>
+        <button id="popupButton" type="button">Créer un token</button>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.getElementById('popupButton').addEventListener('click', function() {
+            fetch('/get-token')
+                .then(response => response.json())
+                .then(data => {
+                    alert("Valeur de la variable : " + data.token);
+                })
+                .catch(error => {
+                    console.error("Erreur lors de la récupération de la variable :", error);
+                });
+        });
+    </script>
+{% endblock %}

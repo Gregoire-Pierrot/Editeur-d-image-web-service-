@@ -1,14 +1,82 @@
 import base64
 import os
-from flask import Flask, request
-from fonctions import verify_token, rotate, inverse, bw, grayscale
+from register import RegisterForm
+from login import LoginForm
+from flask import Flask, request, render_template, redirect, url_for, session, jsonify
+from fonctions import *
+from bdd import init_db
 from app import app
 
 mods = ["rotate_left", "rotate_right", "inverse", "b&w", "grayscale"]
 
+init_db()
+
 @app.route("/", methods=['GET'])
 def homepage():
-    return "Salut !"
+    if 'username' in session :
+        return render_template('home.html', username=session['username'])
+    return render_template('home.html')
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        email_t = getBolByEmail(request.form['email'])
+        username_t = getBolByUsername(request.form['username'])
+        if email_t or username_t :
+            return render_template('register.html', form=form, username_t=username_t, email_t=email_t)
+        if Register(request.form['email'], request.form['username'], request.form['password']):
+            return render_template('login.html', form=form)
+    return render_template('register.html', form=form)
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if CheckIfLoginRight(request.form['email'], request.form['password']):
+            username = getUsernameByEmail(request.form['email'])
+            session['username'] = username
+            print("---------------------------")
+            print("Nouvel utilisateur connecté !")
+            print("Username : ", username)
+            print("---------------------------")
+            return redirect(url_for('account'))
+        elif CheckEmail(request.form['email']):
+            return render_template('login.html', form=form, wrong_password=True)
+        return render_template('login.html', form=form, email_e=True)
+    return render_template("login.html", form=form)
+
+@app.route("/account", methods=['GET', 'POST'])
+def account():
+    if 'username' in session:
+        print(session['username'])
+        username = session['username']
+        email = getEmailByUsername(username)
+        # Si l'utilisateur à trafiqué son navigateur :
+        if email is None :
+            return redirect(url_for('login.html'))
+        return render_template('account.html', email=email, username=username)
+    form = LoginForm()
+    return redirect(url_for('login'))
+
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    username = session['username']
+    print("---------------------------")
+    print("Un utilisateur s'en va ... ")
+    print("Username : ", username)
+    print("---------------------------")
+    session.clear()
+    return redirect('/')
+
+@app.route("/get-token", methods=['GET', 'POST'])
+def token():
+    token = generate_token(session['username'])
+    return jsonify({'token': token})
+
+@app.route("/service", methods=['GET', 'POST'])
+def service():
+    return render_template('service.html', username=session['username'])
 
 @app.route("/modification", methods=['GET', 'POST'])
 def modification():
