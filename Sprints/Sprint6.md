@@ -11,21 +11,22 @@
 ---
 
 ### Git
-- [ ] Potentiel résolution des problèmes | **2 points**
-- [ ] Nettoyage du git | **2 points**
+- [X] **Grégoire** : Potentiel résolution des problèmes | **1 points**
+- [X] **Grégoire** : Nettoyage du git | **1 points**
 
 ---
 
 ### Client
 
 #### Fonctionnalitées
-- [ ] Création du template html du serveur web | **3 points**
-- [ ] Ajout de la pages html d'inscription | **2 poitns**
-- [ ] Ajout de la pages html de connexion | **2 points**
-- [ ] Ajout de la pages html de visualisation et modification d'informations utilisateur | **3 points**
-- [ ] Ajout de la pages html de visualisation d'utilisation (graphique d'utilisation du web service) | **5 points**
-- [ ] Ajout de la page d'obtention du token | **2 points**
-- [ ] Ajout de la page d'utilisation du service | **3 points**
+- [X] **Grégoire** : Création du template html du serveur web | **3 points**
+- [X] **Grégoire** : Ajout de la pages html d'inscription | **2 poitns**
+- [X] **Grégoire** : Ajout de la pages html de connexion | **2 points**
+- [ ] **Grégoire** : Ajout de la pages html de visualisation et modification d'informations utilisateur | **3 points**
+- [ ] **Hamza & Ahibou** : Ajout de la pages html de visualisation d'utilisation (graphique d'utilisation du web service) | **5 points**
+- [X] **Grégoire** : Ajout de la page d'obtention du token | **2 points**
+- [ ] **Grégoire** : Ajout de la page d'utilisation du service | **3 points**
+- [ ] **Ibrahim** : Ajout du css sur les pages | **4 points**
 
 ---
 
@@ -33,14 +34,14 @@
 
 #### Fonctionnalitées
 - [ ] Ajout des routes du serveur web : | ****
-    - [ ] Ajout de la route de d'inscription (/register) | **3 points**
-    - [ ] Ajout de la route de de connexion (/login) | **3 points**
-    - [ ] Ajout de la route de déconnexion (/logout) | **1 points**
-    - [ ] Ajout de la route de visualisation et modification d'informations utilisateur (/account) | **1 points**
-    - [ ] Ajout de la route de visualisation d'utilisation (graphique d'utilisation du web service) (/statistics) | **5 points**
-    - [ ] Ajout de la route d'obtention du token | **2 points**
-    - [ ] Ajout de la route d'utilisation du service (/service) | **5 points**
-- [ ] Ajout d'un thread au serveur permettant de réinitialiser le compteur d'appel par minute pour tout les utilisateurs | **4 points**
+    - [X] **Grégoire** : Ajout de la route de d'inscription (/register) | **3 points**
+    - [X] **Grégoire** : Ajout de la route de de connexion (/login) | **3 points**
+    - [X] **Grégoire** : Ajout de la route de déconnexion (/logout) | **1 points**
+    - [ ] **Grégoire** : Ajout de la route de visualisation et modification d'informations utilisateur (/account) | **1 points**
+    - [ ] **Hamza & Ahibou** : Ajout de la route de visualisation d'utilisation (graphique d'utilisation du web service) (/statistics) | **5 points**
+    - [X] **Grégoire** : Ajout de la route d'obtention du token | **2 points**
+    - [ ] **Grégoire** : Ajout de la route d'utilisation du service (/service) | **5 points**
+- [ ] **Hamza & Ahibou** : Ajout d'un thread au serveur permettant de réinitialiser le compteur d'appel par minute pour tout les utilisateurs | **4 points**
 
 ---
 
@@ -50,14 +51,14 @@
 
 ---
 
-### BDD
-- [ ] Ajout d'une liste de dates (appel au web service) dans la table users | **1 points**
-- [ ] Ajout d'un entier représentant le nombre d'utilisation dans la minute d'un utilisateur dans la table users | **1 points**
+### BHa
+- [ ] **Hamza & Ahibou** : Ajout d'une liste de dates (appel au web service) dans la table users | **1 points**
+- [ ] **Hamza & Ahibou** : Ajout d'un entier représentant le nombre d'utilisation dans la minute d'un utilisateur dans la table users | **1 points**
 
 ---
 
 ### Documentation
-- [ ] Réalisation de la documentation utilisateur | **4 points**
+- [ ] **Tiago** :Réalisation de la documentation utilisateur | **4 points**
 
 ---
 
