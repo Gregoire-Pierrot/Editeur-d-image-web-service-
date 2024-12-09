@@ -25,6 +25,7 @@
 - [ ] Ajout de la pages html de visualisation et modification d'informations utilisateur | **3 points**
 - [ ] Ajout de la pages html de visualisation d'utilisation (graphique d'utilisation du web service) | **5 points**
 - [ ] Ajout de la page d'obtention du token | **2 points**
+- [ ] Ajout de la page d'utilisation du service | **3 points**
 
 ---
 
@@ -34,9 +35,11 @@
 - [ ] Ajout des routes du serveur web : | ****
     - [ ] Ajout de la route de d'inscription (/register) | **3 points**
     - [ ] Ajout de la route de de connexion (/login) | **3 points**
+    - [ ] Ajout de la route de déconnexion (/logout) | **1 points**
     - [ ] Ajout de la route de visualisation et modification d'informations utilisateur (/account) | **1 points**
     - [ ] Ajout de la route de visualisation d'utilisation (graphique d'utilisation du web service) (/visualize) | **5 points**
     - [ ] Ajout de la route d'obtention du token | **2 points**
+    - [ ] Ajout de la route d'utilisation du service (/service) | **5 points**
 - [ ] Ajout d'un thread au serveur permettant de réinitialiser le compteur d'appel par minute pour tout les utilisateurs | **4 points**
 
 ---
