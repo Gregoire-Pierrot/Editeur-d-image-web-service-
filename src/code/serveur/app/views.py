@@ -81,7 +81,7 @@ def service():
 @app.route("/modification", methods=['GET', 'POST'])
 def modification():
     data = request.get_json()
-    limit = 1
+    limit = 2
     
     if 'token' in data:
         token = data['token']
@@ -144,7 +144,7 @@ def modification():
                 else:
                     return {"status": "error", "message": "Aucune image donnée."}, 400
             else:
-                return {"status": "error", "message": "limite de requêtes dépassée."}, 450
+                return {"status": "error", "message": "limite de requêtes dépassée."}, 400
         else:
             return {"status": "error", "message": "Token invalide."}, 400
     else:

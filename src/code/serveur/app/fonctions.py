@@ -209,6 +209,7 @@ def ajout_date(token):
 
     for hashed_token in tokens:
         if hashed_token is not None and check_password_hash(hashed_token, token):
+            
             cursor.execute('''SELECT date_now FROM users WHERE token = ?''', (hashed_token,))
             result = cursor.fetchone()
             current_dates = json.loads(result[0]) if result and result[0] else []

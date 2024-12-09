@@ -99,7 +99,7 @@ class ImageSelector(QWidget):
         with open(image_path, "rb") as image_file:
             encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-        adresse = "http://10.120.19.23:5000/modification"
+        adresse = "http://192.168.0.23:5000/modification"
         data = {
             'token': token,
             'encoded_image': encoded_image,
@@ -112,9 +112,12 @@ class ImageSelector(QWidget):
 
         response = requests.post(adresse, json=data)
         if response.status_code == 400:
-            return {"status": "error", "message": "limite de requête dépassée."}
+            error_message = response.json().get("message", "Erreur inconnue")
+            return {"error": True, "message": error_message}
+        
         decoded_image = base64.b64decode(response.text)
-        return decoded_image
+        return {"error": False, "image": decoded_image}
+    
 
     def save_decoded_image(self, decoded_image, image_path, modifications):
         modifications_string = "_".join(modifications)
@@ -179,15 +182,16 @@ class ImageSelector(QWidget):
             return
 
         try:
-            decoded_image = self.client(self.image_path, modifications, token)
-            if decoded_image:
+            response = self.client(self.image_path, modifications, token)
+
+            if response["error"]:
+                QMessageBox.critical(self, 'Error', response["message"])
+            else:
+                decoded_image = response["image"]
                 pixmap = QPixmap()
                 pixmap.loadFromData(decoded_image)
                 self.image_label.setPixmap(pixmap.scaled(300, 200, Qt.KeepAspectRatio))
                 self.save_button.show()
-
-            else:
-                QMessageBox.information(self, 'failed', 'Failed to process image on the server.')
         except Exception as e:
             QMessageBox.critical(self, 'Error', f'Failed to send data to server: {str(e)}')
 
