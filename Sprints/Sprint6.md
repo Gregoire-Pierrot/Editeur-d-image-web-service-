@@ -60,7 +60,7 @@
 
 ### Documentation
 - [ ] **Tiago** :Réalisation de la documentation utilisateur | **4 points**
-- [ ] **Ibrahim** :Réealisation du diaporama de présentation | **3 points**
+- [x] **Ibrahim** :Réealisation du diaporama de présentation | **3 points**
 
 ---
 
