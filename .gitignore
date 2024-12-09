@@ -13,3 +13,4 @@
 /src/code/client/Client
 /src/code/serveur/app/__pycache__
 /src/code/serveur/app/datab.db
+/src/code/serveur/app/*.pem

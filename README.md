@@ -71,10 +71,10 @@ Il aura ensuite la possiblité d'enregistrer cette nouvelle image.
    source bin/activate
    ```
 
-- Télécharger les différentes librairies : [flask, flask_wtf, pillow, email_validator] avec la commande :
+- Télécharger les différentes librairies : [flask, flask_wtf, pillow, email_validator, flask_talisman] avec la commande :
     
    ```python
-   pip install flask flask_wtf pillow email_validator
+   pip install flask flask_wtf pillow email_validator flask_talisman
    ```
 
 - Ce déplacer dans le dossier app et lancer le serveur : 
