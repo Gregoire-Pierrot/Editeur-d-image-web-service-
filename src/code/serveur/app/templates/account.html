@@ -4,6 +4,25 @@
     <div>
         <p>Bonjour {{username}} !<br>email : {{email}}.</p>
         <button id="popupButton" type="button">Créer un token</button>
+        <button id="mod_infos" type="button">Modifier ses informations</button>
+        <form novalidate method="POST" action="{{url_for('account')}}" id="form" style="display: none;">
+            <h6>Modification des informations</h6>
+            {{ form.csrf_token }}
+            <div class="form_container">
+                <label>Email</label>
+                {{ form.email(class_="form-control", id="email") }}<br>
+                {% if form.email.errors %}
+                    <p>{{ form.email.errors[0] }}</p>
+                {% endif %}
+
+                <label>Nom d'utilisateur</label>
+                {{ form.username(class_="form-control", id="username") }}<br>
+                {% if form.username.errors %}
+                    <p>{{ form.username.errors[0] }}</p>
+                {% endif %}
+            </div>
+            <button class="submit", type="submit">Changer les informations</button>
+        </form>
     </div>
 {% endblock %}
 
@@ -18,6 +37,11 @@
                 .catch(error => {
                     console.error("Erreur lors de la récupération de la variable :", error);
                 });
+        });
+
+        document.getElementById('mod_infos').addEventListener('click', function() {
+            const form = document.getElementById("form");
+            form.setAttribute('style', "display: inline-block");
         });
     </script>
 {% endblock %}

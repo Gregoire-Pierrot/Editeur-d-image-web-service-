@@ -195,3 +195,20 @@ def Register(email, username, password):
     print("---------------------------")
     
     return True
+
+def ChangeInfos(username, new_email, new_username):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    UPDATE users SET email = ? WHERE username = ?
+    ''', (new_email, username))
+    conn.commit()
+    
+    cursor.execute('''
+    UPDATE users SET username = ? WHERE username = ?
+    ''', (new_username, username))
+    conn.commit()
+    conn.close()
+    
+    return True
