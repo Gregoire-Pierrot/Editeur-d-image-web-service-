@@ -40,14 +40,14 @@ def login():
             print("Nouvel utilisateur connecté !")
             print("Username : ", username)
             print("---------------------------")
-            return redirect(url_for('user'))
+            return redirect(url_for('account'))
         elif CheckEmail(request.form['email']):
             return render_template('login.html', form=form, wrong_password=True)
         return render_template('login.html', form=form, email_e=True)
     return render_template("login.html", form=form)
 
-@app.route("/user", methods=['GET', 'POST'])
-def user():
+@app.route("/account", methods=['GET', 'POST'])
+def account():
     if 'username' in session:
         print(session['username'])
         username = session['username']
@@ -55,7 +55,7 @@ def user():
         # Si l'utilisateur à trafiqué son navigateur :
         if email is None :
             return redirect(url_for('login.html'))
-        return render_template('user.html', email=email, username=username)
+        return render_template('account.html', email=email, username=username)
     form = LoginForm()
     return redirect(url_for('login'))
 
@@ -68,6 +68,10 @@ def logout():
     print("---------------------------")
     session.clear()
     return redirect('/')
+
+@app.route("/service", methods=['GET', 'POST'])
+def service():
+    return render_template('service.html', username=session['username'])
 
 @app.route("/modification", methods=['GET', 'POST'])
 def modification():
