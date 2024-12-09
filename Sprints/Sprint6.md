@@ -7,6 +7,7 @@
  - Ajout des pages web pour le web sevices et création de compte
  - Ajout de données utilisateurs dans la base de données (suivi d'utilisation)
  - Réalisation de la documentation
+ - Présentation du projet
 
 ---
 
@@ -59,6 +60,7 @@
 
 ### Documentation
 - [ ] **Tiago** :Réalisation de la documentation utilisateur | **4 points**
+- [ ] **Ibrahim** :Réealisation du diaporama de présentation | **3 points**
 
 ---
 
