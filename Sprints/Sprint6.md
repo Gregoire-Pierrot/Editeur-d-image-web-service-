@@ -41,7 +41,7 @@
     - [ ] **Grégoire** : Ajout de la route de visualisation et modification d'informations utilisateur (/account) | **1 points**
     - [ ] **Hamza & Ahibou** : Ajout de la route de visualisation d'utilisation (graphique d'utilisation du web service) (/statistics) | **5 points**
     - [X] **Grégoire** : Ajout de la route d'obtention du token | **2 points**
-    - [ ] **Grégoire** : Ajout de la route d'utilisation du service (/service) | **5 points**
+    - [X] **Grégoire** : Ajout de la route d'utilisation du service (/service) | **5 points**
 - [ ] **Hamza & Ahibou** : Ajout d'un thread au serveur permettant de réinitialiser le compteur d'appel par minute pour tout les utilisateurs | **4 points**
 
 ---
@@ -53,14 +53,14 @@
 ---
 
 ### BHa
-- [ ] **Hamza & Ahibou** : Ajout d'une liste de dates (appel au web service) dans la table users | **1 points**
+- [X] **Hamza & Ahibou** : Ajout d'une liste de dates (appel au web service) dans la table users | **1 points**
 - [ ] **Hamza & Ahibou** : Ajout d'un entier représentant le nombre d'utilisation dans la minute d'un utilisateur dans la table users | **1 points**
 
 ---
 
 ### Documentation
-- [ ] **Tiago** :Réalisation de la documentation utilisateur | **4 points**
-- [x] **Ibrahim** :Réealisation du diaporama de présentation | **3 points**
+- [X] **Tiago** :Réalisation de la documentation utilisateur | **4 points**
+- [X] **Ibrahim** :Réealisation du diaporama de présentation | **3 points**
 
 ---
 
