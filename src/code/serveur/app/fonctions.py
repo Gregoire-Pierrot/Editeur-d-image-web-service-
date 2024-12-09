@@ -40,7 +40,7 @@ def verify_token(token):
     tokens = [row[0] for row in result]
 
     for hashed_token in tokens:
-        if check_password_hash(hashed_token, token) :
+        if hashed_token is not None and check_password_hash(hashed_token, token) :
             return True
     return False
 
