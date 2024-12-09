@@ -11,4 +11,4 @@
 .vscode
 /src/code/serveur/Flask
 /src/code/serveur/app/__pycache__
-/src/code/serveur/app/user.db
+/src/code/serveur/app/datab.db

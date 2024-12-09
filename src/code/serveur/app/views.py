@@ -52,6 +52,9 @@ def user():
         print(session['username'])
         username = session['username']
         email = getEmailByUsername(username)
+        # Si l'utilisateur à trafiqué son navigateur :
+        if email is None :
+            return redirect(url_for('login.html'))
         return render_template('user.html', email=email, username=username)
     form = LoginForm()
     return redirect(url_for('login'))
@@ -64,7 +67,7 @@ def logout():
     print("Username : ", username)
     print("---------------------------")
     session.clear()
-    return redirect('login')
+    return redirect('/')
 
 @app.route("/modification", methods=['GET', 'POST'])
 def modification():
@@ -129,21 +132,3 @@ def modification():
             return {"status": "error", "message": "Token invalide."}, 400
     else:
         return {"status": "error", "message": "Aucun token donné."}, 400
-
-# TODO: Faire disparaitre apres avoir fait le /register
-#@app.route("/add_user", methods=['POST'])
-#def add_user():
-#    data = request.get_json()
-#    
-#    if 'username' in data :
-#        if 'password' in data :
-#            username = data['username']
-#            password = data['password']
-#            try :
-#                return ajout_user(username, password)
-#            except sqlite3.IntegrityError:
-#                return "erreur ajout user"
-#        else:
-#            return "error"
-#    else:
-#        return "error"

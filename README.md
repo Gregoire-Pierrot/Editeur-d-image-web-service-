@@ -45,7 +45,7 @@ Il aura ensuite la possiblité d'enregistrer cette nouvelle image.
    source bin/activate
    ```
 
-- Télécharger les différentes librairies : [flask, pillow] avec la commande :
+- Télécharger les différentes librairies : [flask, flask_wtf, pillow, email_validator] avec la commande :
     
    ```python
    pip install flask pillow

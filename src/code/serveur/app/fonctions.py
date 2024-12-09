@@ -112,22 +112,26 @@ def getUsernameByEmail(email):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    username = cursor.execute("SELECT username FROM users WHERE email = ?", (email,)).fetchone()
+    row = cursor.execute("SELECT username FROM users WHERE email = ?", (email,)).fetchone()
 
     conn.close()
 
-    return username
+    if row :
+        return row['username']
+    return None
 
 def getEmailByUsername(username):
     conn = sqlite3.connect('datab.db')
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    email = cursor.execute("SELECT email FROM users WHERE username = ?", (username,)).fetchone()
+    row = cursor.execute("SELECT email FROM users WHERE username = ?", (username,)).fetchone()
 
     conn.close()
 
-    return email
+    if row :
+        return row['email']
+    return None
 
 def CheckEmail(email):
     conn = sqlite3.connect('datab.db')
@@ -143,13 +147,16 @@ def CheckIfLoginRight(email, password):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
+    print("ici 1")
     user = cursor.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+    print("ici 2")
 
     conn.close()
 
     if user is None:
         return False
     
+    print("ici 3")
     return check_password_hash(user['password'], password)
 
 def Register(email, username, password):
