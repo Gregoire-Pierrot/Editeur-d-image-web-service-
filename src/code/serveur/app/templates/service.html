@@ -2,30 +2,100 @@
 
 {% block body %}
     <div class="container">
-        <div class="header">
-            <h1>Modifier une image</h1>
-            <p>Utilisez les boutons pour appliquer des transformations à votre image.</p>
-        </div>
-
-        <input type="file" id="imageInput" accept="image/*" class="upload-button">
-
-        <div id="imageContainer">
-            <canvas id="canvas"></canvas>
-        </div>
-
-        <div class="controls">
-            <button class="btn" onclick="rotateImage()">Rotation</button>
-            <button class="btn" onclick="applyGrayscale()">Noir & Blanc</button>
-            <button class="btn" onclick="flipHorizontal()">Inversion Horizontale</button>
-            <button class="btn" onclick="resizeImage()">Redimensionner (50%)</button>
-            <button class="btn" onclick="adjustBrightness(20)">Augmenter Luminosité</button>
-            <button class="btn" onclick="adjustBrightness(-20)">Diminuer Luminosité</button>
-            <button class="btn" onclick="adjustContrast(20)">Augmenter Contraste</button>
-            <button class="btn" onclick="adjustContrast(-20)">Diminuer Contraste</button>
-        </div>
+        <h1>Modifier une image</h1>
+        <form id="modificationForm">
+            <label for="imageUpload">Téléchargez une image :</label>
+            <input type="file" id="imageUpload" accept="image/*" required><br><br>
+        
+            <label for="modifications">Choisissez les modifications :</label><br>
+            <input type="checkbox" id="rotate_left" value="rotate_left"> Tourner à gauche<br>
+            <input type="checkbox" id="rotate_right" value="rotate_right"> Tourner à droite<br>
+            <input type="checkbox" id="inverse" value="inverse"> Retouner<br>
+            <input type="checkbox" id="bw" value="b&w"> Noir et blanc<br>
+            <input type="checkbox" id="grayscale" value="grayscale"> Nuance de gris<br><br>
+        
+            <button type="submit">Envoyer</button>
+            <a id="downloadButton" style="display: none;" download="image_modifiee.png">Télécharger</a>
+        </form>
+    
+        <h2>Résultat :</h2>
+        <img id="resultImage" alt="Image modifiée apparaîtra ici">
+        <p id="errorMessage" style="color: red;"></p>
     </div>
 {% endblock %}
 
 {% block script %}
-    
+    <script>
+        // Fonction pour encoder l'image en Base64
+        function encodeImageToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = (error) => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Écouter le formulaire
+        document.getElementById("modificationForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const fileInput = document.getElementById("imageUpload");
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("Veuillez sélectionner une image !");
+                return;
+            }
+
+            // Récupérer les modifications
+            const modifications = [];
+            document.querySelectorAll("#modificationForm input[type='checkbox']:checked").forEach((checkbox) => {
+                modifications.push(checkbox.value);
+            });
+
+            if (modifications.length === 0) {
+                alert("Veuillez sélectionner au moins une modification !");
+                return;
+            }
+
+            try {
+                // Encoder l'image en Base64
+                const encodedImage = await encodeImageToBase64(file);
+
+                // Envoyer les données à l'API Flask
+                const response = await fetch("/modification-web", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        encoded_image: encodedImage,
+                        modifications: modifications,
+                    }),
+                });
+
+                const result = await response.text();
+
+                if (response.ok) {
+                    const base64Image = result;
+
+                    const imgElement = document.getElementById("resultImage");
+                    imgElement.setAttribute('src', "data:image/jpg;base64," + base64Image);
+                    imgElement.setAttribute('alt', "Image modifiée");
+
+                    const downloadButton = document.getElementById("downloadButton");
+                    downloadButton.setAttribute('href', "data:image/jpg;base64," + base64Image);
+                    downloadButton.setAttribute('style', "display: inline-block");
+        
+                    document.getElementById("errorMessage").textContent = "";
+                } else {
+                    document.getElementById("errorMessage").textContent = result.message;
+                }
+            } catch (error) {
+                console.error("Erreur lors de la modification :", error);
+                alert("Une erreur s'est produite. Consultez la console pour plus de détails.");
+            }
+        });
+    </script>
 {% endblock %}
