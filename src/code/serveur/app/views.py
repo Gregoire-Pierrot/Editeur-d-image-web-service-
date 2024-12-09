@@ -2,6 +2,7 @@ import base64
 import os
 from register import RegisterForm
 from login import LoginForm
+from account import AccountForm
 from flask import Flask, request, render_template, redirect, url_for, session, jsonify
 from fonctions import *
 from bdd import init_db
@@ -49,13 +50,17 @@ def login():
 @app.route("/account", methods=['GET', 'POST'])
 def account():
     if 'username' in session:
-        print(session['username'])
+        form = AccountForm()
         username = session['username']
         email = getEmailByUsername(username)
         # Si l'utilisateur à trafiqué son navigateur :
         if email is None :
-            return redirect(url_for('login.html'))
-        return render_template('account.html', email=email, username=username)
+            return redirect(url_for('login'))
+        if form.validate_on_submit():
+            if ChangeInfos(username, request.form['email'], request.form['username']):
+                session['username'] = request.form['username']
+                return redirect(url_for('account'))
+        return render_template('account.html', form=form, email=email, username=username)
     form = LoginForm()
     return redirect(url_for('login'))
 
