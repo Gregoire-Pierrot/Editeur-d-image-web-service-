@@ -10,5 +10,6 @@
 .idea
 .vscode
 /src/code/serveur/Flask
+/src/code/client/Client
 /src/code/serveur/app/__pycache__
 /src/code/serveur/app/datab.db

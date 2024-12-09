@@ -2,7 +2,7 @@ import base64
 import os
 from register import RegisterForm
 from login import LoginForm
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, render_template, redirect, url_for, session, jsonify
 from fonctions import *
 from bdd import init_db
 from app import app
@@ -68,6 +68,11 @@ def logout():
     print("---------------------------")
     session.clear()
     return redirect('/')
+
+@app.route("/get-token", methods=['GET', 'POST'])
+def token():
+    token = generate_token(session['username'])
+    return jsonify({'token': token})
 
 @app.route("/service", methods=['GET', 'POST'])
 def service():

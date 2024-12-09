@@ -10,6 +10,32 @@ Une fois dedans, le client devra renseigner différents champs : son token, l'im
 Il aura ensuite la possiblité d'enregistrer cette nouvelle image.
 
 
+## Pour utiliser le client
+- Créez vous un compte sur le site
+- Générez et récuperez un token
+- Placez vous dans le répertoir src/code/client
+- Créez un environnement python avec la commande :
+   - ```bash
+     python3 -m venv Client
+     ```
+- Activez l'environnement et installez les librairies :
+   - ```bash
+     source Client/bin/activate
+     pip install requests PyQt5
+     ```
+- Installez les dépendences nécessaires :
+   - ```bash
+     sudo apt update
+     sudo apt install --reinstall libxcb-xinerama0 libxcb-xinerama0-dev
+     sudo apt install libxcb1 libx11-xcb1 libxrender1 libxext6
+     sudo apt install python3-pyqt5 python3-pyqt5.qtsvg
+     ```
+- Lancez l'application : 
+   - ```bash
+     python3 client.py
+     ```
+
+
 ## Pour pouvoir héberger un serveur veuillez suivre les instructions suivantes :
 - Créer un dossier "images" dans src/code/serveur/app
 - Télécharger Python 3.10.* ou plus
@@ -48,7 +74,7 @@ Il aura ensuite la possiblité d'enregistrer cette nouvelle image.
 - Télécharger les différentes librairies : [flask, flask_wtf, pillow, email_validator] avec la commande :
     
    ```python
-   pip install flask pillow
+   pip install flask flask_wtf pillow email_validator
    ```
 
 - Ce déplacer dans le dossier app et lancer le serveur : 

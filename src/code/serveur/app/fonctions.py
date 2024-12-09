@@ -8,9 +8,25 @@ import secrets
 import base64
 
 
-def generate_token():
-    token_bytes = secrets.token_bytes(32)
-    return base64.b64encode(token_bytes).decode('utf-8')
+def generate_token(username):
+    token = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
+    
+    while verify_token(token):
+        token = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
+        
+    hashed_token = generate_password_hash(token)
+        
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    UPDATE users SET token = ? WHERE username = ?
+    ''', (hashed_token, username))
+    conn.commit()
+    conn.close()
+    
+    print("new token : ", token)
+    return token
 
 def verify_token(token):
     conn = sqlite3.connect('datab.db')
@@ -166,12 +182,10 @@ def Register(email, username, password):
     # At this point, the email and the username were alwready verified.
 
     hashed_password = generate_password_hash(password)
-    token = generate_token()
-    hashed_token = generate_password_hash(token)
     cursor.execute('''
-    INSERT INTO users (email, username, password, token)
-    VALUES (?, ?, ?, ?)
-    ''', (email, username, hashed_password, hashed_token))
+    INSERT INTO users (email, username, password)
+    VALUES (?, ?, ?)
+    ''', (email, username, hashed_password))
     conn.commit()
     conn.close()
     

@@ -10,7 +10,7 @@ def init_db():
         email TEXT UNIQUE NOT NULL,
         username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
-        token TEXT DEFAULT ''
+        token TEXT
     )
     ''')
     
