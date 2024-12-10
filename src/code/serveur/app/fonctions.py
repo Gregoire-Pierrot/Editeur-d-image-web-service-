@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import secrets
 import base64
-
+from datetime import datetime, timedelta
 
 def generate_token(username):
     token = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
@@ -185,9 +185,9 @@ def Register(email, username, password):
 
     hashed_password = generate_password_hash(password)
     cursor.execute('''
-    INSERT INTO users (email, username, password)
-    VALUES (?, ?, ?)
-    ''', (email, username, hashed_password))
+    INSERT INTO users (email, username, password, date_now, limit_count, minute_usage)
+    VALUES (?, ?, ?, ?, ?, ?)
+    ''', (email, username, hashed_password, json.dumps([]), 0, 0))
     conn.commit()
     conn.close()
     
@@ -209,7 +209,7 @@ def ajout_date(token):
 
     for hashed_token in tokens:
         if hashed_token is not None and check_password_hash(hashed_token, token):
-            
+
             cursor.execute('''SELECT date_now FROM users WHERE token = ?''', (hashed_token,))
             result = cursor.fetchone()
             current_dates = json.loads(result[0]) if result and result[0] else []
@@ -219,8 +219,8 @@ def ajout_date(token):
 
             updated_dates_json = json.dumps(current_dates)
             cursor.execute('UPDATE users SET date_now = ? WHERE token = ?', (updated_dates_json, hashed_token))
-            conn.commit()
-            conn.close()
+    conn.commit()
+    conn.close()
 
 
 def limit_user(token):
@@ -254,8 +254,46 @@ def limit_user(token):
             count = len(recent_dates)
             print("count ", count)
             cursor.execute('''UPDATE users SET limit_count = ? WHERE token = ?''', (count, hashed_token))
-            conn.commit()
-            conn.close()
-            return count
+    conn.commit()
+    conn.close()
+    return count
 
+
+
+def increment_usage(token):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if hashed_token is not None and check_password_hash(hashed_token, token):
+            cursor.execute("SELECT minute_usage, date_now FROM users WHERE token=?", (hashed_token,))
+            row = cursor.fetchone()
+            
+
+            if row:
+                usage, last_update_json  = row
+                print(" usage ", usage)
+                if last_update_json:
+                    last_update_list = json.loads(last_update_json)
+                    # On prend le dernier élément de la liste
+                    last_update = datetime.fromisoformat(last_update_list[-1]) if last_update_list else datetime.now()
+
+                    now = datetime.now()
+
+                    if (now - last_update) > timedelta(minutes=1):
+                        usage = 1
+                        cursor.execute("UPDATE users SET minute_usage=?, date_now=? WHERE token=?", (usage, json.dumps([now.isoformat()]), hashed_token))
+
+                    else:
+                        usage += 1
+                        cursor.execute("UPDATE users SET minute_usage=? WHERE token=?", ( usage, hashed_token))
+                
+
+    conn.commit()
+    conn.close()
 

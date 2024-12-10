@@ -12,7 +12,8 @@ def init_db():
         password TEXT NOT NULL,
         token TEXT,
         date_now DATE,
-        limit_count INTEGER
+        limit_count INTEGER,
+        minute_usage INTEGER DEFAULT 0
     )
     ''')
     

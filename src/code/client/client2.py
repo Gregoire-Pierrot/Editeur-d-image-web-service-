@@ -99,7 +99,8 @@ class ImageSelector(QWidget):
         with open(image_path, "rb") as image_file:
             encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-        adresse = "http://192.168.0.23:5000/modification"
+        
+        adresse = "http://127.0.0.1:5000/modification"
         data = {
             'token': token,
             'encoded_image': encoded_image,
@@ -116,6 +117,7 @@ class ImageSelector(QWidget):
             return {"error": True, "message": error_message}
         
         decoded_image = base64.b64decode(response.text)
+
         return {"error": False, "image": decoded_image}
     
 

@@ -78,14 +78,31 @@ def token():
 def service():
     return render_template('service.html', username=session['username'])
 
+
+
+@app.route("/statistics", methods=['GET'])
+def statistics():
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+    if 'username' in session :
+        cursor.execute("SELECT username, minute_usage FROM users WHERE username=?", (session['username'],))
+        data = cursor.fetchall()
+    conn.close()
+    
+    usage_data = {row[0]: row[1] for row in data}
+    return render_template("statistics.html", usage_data=json.dumps(usage_data))
+    
+
+
 @app.route("/modification", methods=['GET', 'POST'])
 def modification():
     data = request.get_json()
-    limit = 2
+    limit = 100
     
     if 'token' in data:
         token = data['token']
         if verify_token(token):
+            increment_usage(token)
             print("Token valide.")
             ajout_date(token)
             print("ajout fait")
