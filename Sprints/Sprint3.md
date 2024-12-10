@@ -17,7 +17,7 @@ Reprendre le web service pour avoir des requêtes HTTP.
 
 #### Fonctionnalités
 - [x] **Hamza** : Modifier le client déjà existant pour faire des requêtes HTTP | **2 points**
-- [ ] **Hamza** : Enregistrer l'image modifiée | **3 points**
+- [ ] **Elias** : Enregistrer l'image modifiée | **3 points**
 
 ---
 
