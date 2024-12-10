@@ -38,7 +38,7 @@ Debugage & améliorations de la partie BDD
 ### BDD
 - [x] **Grégoire** : Améliorations des fonctions BDD | **3 points**
 - [x] **Grégoire** : Debugage routes BDD | **5 points**
-- [x] **Ahibou** : Verification Token | **6 points**
+- [x] **Ahibou** et **Elias** : Verification Token | **6 points**
 
 ---
 
