@@ -15,7 +15,7 @@ Commencer le projet, se mettre d'accord sur le fonctionnement du web service.
 - [x] **Hamza** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
 - [x] Prendre l'instruction de modification d'image / 1
-- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+- [x] **Elias** Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 - [x] **Ahibou** : Faire une requête au serveur avec l'image, l'instruction et le token (JWT) / 2
 - [ ] **Ibrahim** : Faire une interface utilisateur / 12
@@ -65,12 +65,12 @@ Commencer la connexion au serveur et commencer l'interface client.
 - [x] **Hamza** : Se connecter au serveur / 2
   - [ ] **Test** : Vérifier la connexion au serveur / 1
 - [x] Prendre l'instruction de modification d'image / 1
-- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
+- [x] **Elias** Prendre l'image à modifier (image locale) + vérifier le format du fichier / 12
   - [ ] **Test** : Vérifier les formats d'image acceptés / 1
 - [x] **Ahibou** : Faire une requête au serveur avec l'image, l'instruction et le token (JWT) / 2
 - [ ] **Ibrahim** : Faire une interface utilisateur / 12
 - [ ] Afficher l'image retournée du serveur / 4
-- [ ] Permettre l'enregistrement de l'image modifiée / 2
+- [x] **Elias** Permettre l'enregistrement de l'image modifiée / 2
 
 ## Serveur (Java)
 
@@ -111,7 +111,7 @@ Reprendre le web service pour avoir des requêtes HTTP.
 
 ## Client (Python)
 Modification client, passage d'une connexion TCP-IP en requêtes HTTP.
-
+- [x] **Elias** Afficher l'image retournée du serveur / 4
 ### Fonctionnalités
 - [x] **Hamza** : Modifier le client déjà existant pour faire des requêtes HTTP
 - [ ] **Hamza** : Ajouter dans le client une zone de texte pour envoyer le token
