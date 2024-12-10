@@ -25,7 +25,7 @@ Choisir la technologie (langage) pour :
 
 - [X] **Hamza** : Prendre l'instruction de modification d'image | **1 point**
 
-- [ ] Prendre l'image à modifier (image locale) + vérifier le format du fichier | **12 points**
+- [X] **Elias** Prendre l'image à modifier (image locale) + vérifier le format du fichier | **12 points**
   - [ ] **Test** : Vérifier les formats d'image acceptés | **1 point**
 
 - [X] **Ahibou :** Voir comment faire (+ tester) une requête au serveur avec l'image, l'instruction et le token (JWT - JSON Web Token) | **2 points**
@@ -34,7 +34,7 @@ Choisir la technologie (langage) pour :
 
 - [ ] Afficher l'image retournée du serveur | **4 points**
 
-- [ ] Permettre l'enregistrement de l'image modifiée | **2 points**
+- [X] **Elias** Permettre l'enregistrement de l'image modifiée | **2 points**
 
 ---
 
