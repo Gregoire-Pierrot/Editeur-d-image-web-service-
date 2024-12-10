@@ -17,7 +17,7 @@
 #### **Fonctionnalités :**
 - [x] **Hamza** : Se connecter au serveur | **2 points**
   - [ ] **Test** : Vérifier la connexion au serveur | **1 point**
-- [ ] Gérer l'image à modifier (image locale) + vérifier le format du fichier | **12 points**
+- [X] **Elias** Gérer l'image à modifier (image locale) + vérifier le format du fichier | **12 points**
   - [ ] **Test** : Vérifier les formats d'image acceptés | **1 point**
 - [x] **Ahibou** : Faire une requête au serveur avec l'image, l'instruction et le token (JWT) | **2 points**
 - [x] **Ibrahim** : Créer l'interface utilisateur | **12 points**
