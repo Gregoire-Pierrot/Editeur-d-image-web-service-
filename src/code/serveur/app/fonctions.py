@@ -293,7 +293,7 @@ def increment_usage(token):
                         usage += 1
                         cursor.execute("UPDATE users SET minute_usage=? WHERE token=?", ( usage, hashed_token))
                 
-
+                    
     conn.commit()
     conn.close()
 
