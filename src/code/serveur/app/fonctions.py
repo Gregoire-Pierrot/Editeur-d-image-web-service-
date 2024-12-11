@@ -1,4 +1,6 @@
 import base64
+import json
+from datetime import datetime, timedelta
 from io import BytesIO
 from PIL import Image
 import sqlite3
@@ -6,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 import secrets
 import base64
+from datetime import datetime, timedelta
 
 
 def generate_token(username):
@@ -195,6 +198,105 @@ def Register(email, username, password):
     print("---------------------------")
     
     return True
+
+def ajout_date(token):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if hashed_token is not None and check_password_hash(hashed_token, token):
+
+            cursor.execute('''SELECT date_now FROM users WHERE token = ?''', (hashed_token,))
+            result = cursor.fetchone()
+            current_dates = json.loads(result[0]) if result and result[0] else []
+
+            new_date = datetime.now().isoformat()
+            current_dates.append(new_date)
+
+            updated_dates_json = json.dumps(current_dates)
+            cursor.execute('UPDATE users SET date_now = ? WHERE token = ?', (updated_dates_json, hashed_token))
+    conn.commit()
+    conn.close()
+
+
+def limit_user(token):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if hashed_token is not None and check_password_hash(hashed_token, token):
+            cursor.execute('SELECT date_now FROM users WHERE token = ?', (hashed_token,))
+            result = cursor.fetchone()
+
+            if not result or not result[0]:
+                return 0  # Si aucune donnée n'est trouvée, retourner 0
+
+            # Charger les dates en tant que liste Python
+            date_list = json.loads(result[0])  # Charger la chaîne JSON en liste Python
+            print("date_list ", date_list)
+
+            # Calculer la limite de temps (il y a une minute)
+            one_minute_ago = datetime.now() - timedelta(minutes=1)
+            print("one minute ", one_minute_ago)
+
+            # Filtrer les dates de la dernière minute
+            recent_dates = [date for date in date_list if datetime.fromisoformat(date) >= one_minute_ago]
+
+            count = len(recent_dates)
+            print("count ", count)
+            cursor.execute('''UPDATE users SET limit_count = ? WHERE token = ?''', (count, hashed_token))
+    conn.commit()
+    conn.close()
+    return count
+
+
+
+def increment_usage(token):
+    conn = sqlite3.connect('datab.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT token FROM users")
+    result = cursor.fetchall()
+
+    tokens = [row[0] for row in result]
+
+    for hashed_token in tokens:
+        if hashed_token is not None and check_password_hash(hashed_token, token):
+            cursor.execute("SELECT minute_usage, date_now FROM users WHERE token=?", (hashed_token,))
+            row = cursor.fetchone()
+            
+
+            if row:
+                usage, last_update_json  = row
+                print(" usage ", usage)
+                if last_update_json:
+                    last_update_list = json.loads(last_update_json)
+                    # On prend le dernier élément de la liste
+                    last_update = datetime.fromisoformat(last_update_list[-1]) if last_update_list else datetime.now()
+
+                    now = datetime.now()
+
+                    if (now - last_update) > timedelta(minutes=1):
+                        usage = 1
+                        cursor.execute("UPDATE users SET minute_usage=?, date_now=? WHERE token=?", (usage, json.dumps([now.isoformat()]), hashed_token))
+
+                    else:
+                        usage += 1
+                        cursor.execute("UPDATE users SET minute_usage=? WHERE token=?", ( usage, hashed_token))
+                
+                    
+    conn.commit()
+    conn.close()
 
 def ChangeInfos(username, new_email, new_username):
     conn = sqlite3.connect('datab.db')
